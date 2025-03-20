@@ -87,27 +87,40 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Form submission
+document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.contact-form');
+
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Here you would typically send the form data to a server
-            // For this example, we'll just log it and show an alert
-            console.log('Form submitted:', { name, email, message });
-            
-            // Show success message
-            alert('Thank you for your message! We will get back to you soon.');
-            
-            // Reset form
-            contactForm.reset();
+
+            // Capturar datos
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            // Enviar datos a n8n Webhook
+            fetch("https://n8n-main-instance-production-96ac.up.railway.app/webhook/contacto", { // 🔹 Reemplaza con la URL de tu webhook
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: { "Content-Type": "application/json" }
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('✅ Mensaje enviado con éxito.');
+                contactForm.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('❌ Hubo un problema al enviar el mensaje.');
+            });
         });
     }
+});
+
+
     
     // Header scroll effect
     window.addEventListener('scroll', function() {

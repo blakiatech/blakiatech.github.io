@@ -455,3 +455,36 @@ footer {
         padding: 20px;
     }
 }
+
+
+
+
+
+/* Estilos para la sección de redes sociales */
+.social-media {
+    text-align: center;
+    padding: 40px 0;
+    background-color: #000; /* Fondo negro */
+}
+
+.social-media .section-title {
+    color: #fff; /* Texto blanco */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre iconos */
+}
+
+.social-icons a {
+    font-size: 32px; /* Tamaño de los iconos */
+    color: #fff; /* Color blanco por defecto */
+    transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: #007bff; /* Azul cuando pasas el ratón */
+}
