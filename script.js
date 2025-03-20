@@ -87,36 +87,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Form submission
-   const contactForm = document.querySelector('.contact-form');
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('.contact-form');
 
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value
-        };
+            // Capturar datos
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
 
-        fetch("https://script.google.com/macros/s/AKfycbw-LtGKRyme5vucB5E_uaNpb14J95NjXiszwQRKMnI00AE_jrLXdK1zuu64DXEWwcAcUA/exec", {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: { "Content-Type": "application/json" }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === "success") {
-                alert('Mensaje enviado con éxito.');
+            // Enviar datos a n8n Webhook
+            fetch("https://n8n-main-instance-production-96ac.up.railway.app/webhook/contacto", { // 🔹 Reemplaza con la URL de tu webhook
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: { "Content-Type": "application/json" }
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('✅ Mensaje enviado con éxito.');
                 contactForm.reset();
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Hubo un problema al enviar el mensaje.');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('❌ Hubo un problema al enviar el mensaje.');
+            });
         });
-    });
-}
+    }
+});
+
 
     
     // Header scroll effect
