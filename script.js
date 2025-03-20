@@ -87,27 +87,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Form submission
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Here you would typically send the form data to a server
-            // For this example, we'll just log it and show an alert
-            console.log('Form submitted:', { name, email, message });
-            
-            // Show success message
-            alert('Thank you for your message! We will get back to you soon.');
-            
-            // Reset form
-            contactForm.reset();
+   const contactForm = document.querySelector('.contact-form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        };
+
+        fetch("TU_URL_DEL_SCRIPT", {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                alert('Mensaje enviado con éxito.');
+                contactForm.reset();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un problema al enviar el mensaje.');
         });
-    }
+    });
+}
+
     
     // Header scroll effect
     window.addEventListener('scroll', function() {
