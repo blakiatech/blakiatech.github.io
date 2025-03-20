@@ -99,7 +99,7 @@ if (contactForm) {
             message: document.getElementById('message').value
         };
 
-        fetch("TU_URL_DEL_SCRIPT", {
+        fetch("https://script.google.com/macros/s/AKfycbw-LtGKRyme5vucB5E_uaNpb14J95NjXiszwQRKMnI00AE_jrLXdK1zuu64DXEWwcAcUA/exec", {
             method: "POST",
             body: JSON.stringify(formData),
             headers: { "Content-Type": "application/json" }
