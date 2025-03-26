@@ -124,9 +124,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener("message", (event) => {
         if (event.data.closeChat) {
-          chatIframe.style.display = "none";
+            const iframe = document.getElementById("chat-iframe");
+            if (iframe) {
+                iframe.style.display = "none";
+            }
         }
-      });
+    });
       
 
     // Header scroll effect
