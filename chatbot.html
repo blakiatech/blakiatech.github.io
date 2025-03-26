@@ -290,6 +290,31 @@ window.addEventListener('resize', () => {
   closeButton.addEventListener('click', () => {
     window.parent.postMessage({ closeChat: true }, "*");
   });
+
+// Ajusta la altura del chat para que no lo tape el teclado en móviles
+if (window.visualViewport) {
+  const wrapper = document.querySelector('.chat-wrapper');
+
+  function adjustHeight() {
+    wrapper.style.height = `${window.visualViewport.height}px`;
+  }
+
+  window.visualViewport.addEventListener('resize', adjustHeight);
+  window.visualViewport.addEventListener('scroll', adjustHeight);
+
+  // Llamamos al inicio por si ya está abierto el teclado
+  adjustHeight();
+}
+
+// BONUS: asegura que el input se vea al enfocar
+document.getElementById('user-input').addEventListener('focus', () => {
+  setTimeout(() => {
+    document.getElementById('user-input').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 300);
+});
+
+
+
 </script>
 </body>
 </html>
