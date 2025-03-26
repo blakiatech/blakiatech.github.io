@@ -1,0 +1,22 @@
+---
+import { onMount } from 'astro/client';
+---
+<div class="fixed bottom-6 right-6 z-50">
+  <div id="chat-bubble" class="bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg cursor-pointer">
+    💬
+  </div>
+  <iframe id="chat-iframe" class="hidden sm:block w-[360px] h-[500px] rounded-lg shadow-xl mt-4" src="/chatbot.html"></iframe>
+</div>
+
+<script is:inline>
+  const bubble = document.getElementById("chat-bubble");
+  const iframe = document.getElementById("chat-iframe");
+  bubble.addEventListener("click", () => {
+    iframe.classList.toggle("hidden");
+  });
+  window.addEventListener("message", (event) => {
+    if (event.data.closeChat) {
+      iframe.classList.add("hidden");
+    }
+  });
+</script>
