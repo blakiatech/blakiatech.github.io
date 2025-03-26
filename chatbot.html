@@ -195,7 +195,36 @@
         font-size: 0.7rem;
       }
     }
+
+    .bot h1, .bot h2, .bot h3 {
+      color: var(--primary);
+      margin: 10px 0 5px;
+    }
+
+    .bot p {
+      margin: 5px 0;
+    }
+
+    .bot ul {
+      padding-left: 20px;
+      margin: 5px 0;
+    }
+
+    .bot a {
+      color: #4ea1ff;
+      text-decoration: underline;
+    }
+
+    .bot code {
+      background: #333;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: #fff;
+    }
+
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
@@ -229,10 +258,11 @@
     msg.className = `msg ${type}`;
     msg.innerHTML = isError
       ? `<span class="error">❌ ${text}</span>`
-      : text;
+      : marked.parse(text);
     chatbox.appendChild(msg);
     chatbox.scrollTo({ top: chatbox.scrollHeight, behavior: 'smooth' });
   }
+
 
   async function sendMessage(text) {
     addMessage(text, 'user');
