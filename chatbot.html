@@ -275,11 +275,12 @@
     }
   });
 
-  input.addEventListener('focus', () => {
-  setTimeout(() => {
-    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, 300); // espera a que el teclado aparezca
+  // Corrige el scroll cuando aparece el teclado en móvil
+window.addEventListener('resize', () => {
+  const input = document.getElementById('user-input');
+  input.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
+
 
 
 
