@@ -275,6 +275,15 @@
     }
   });
 
+  input.addEventListener('focus', () => {
+  setTimeout(() => {
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 300); // espera a que el teclado aparezca
+});
+
+
+
+
   sendButton.addEventListener('click', handleSend);
 
   closeButton.addEventListener('click', () => {
