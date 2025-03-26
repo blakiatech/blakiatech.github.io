@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <title>ChatBot - BlakIA</title>
   <style>
     :root {
@@ -21,14 +23,13 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
+    html, body {
+      height: 100dvh;
       margin: 0;
       padding: 0;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
       background-color: transparent;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
     }
 
     .chat-wrapper {
@@ -68,6 +69,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      -webkit-overflow-scrolling: touch;
     }
 
     .msg {
@@ -112,6 +114,9 @@
       background-color: var(--foreground);
       padding: 10px;
       gap: 10px;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
     }
 
     #user-input {
@@ -136,6 +141,8 @@
       cursor: pointer;
       font-size: 1rem;
       transition: background-color 0.2s ease;
+      min-width: 60px;
+      touch-action: manipulation;
     }
 
     #send-button:hover {
@@ -224,7 +231,7 @@
       ? `<span class="error">❌ ${text}</span>`
       : text;
     chatbox.appendChild(msg);
-    chatbox.scrollTop = chatbox.scrollHeight;
+    chatbox.scrollTo({ top: chatbox.scrollHeight, behavior: 'smooth' });
   }
 
   async function sendMessage(text) {
@@ -234,7 +241,7 @@
     typing.className = 'typing';
     typing.textContent = 'Escribiendo...';
     chatbox.appendChild(typing);
-    chatbox.scrollTop = chatbox.scrollHeight;
+    chatbox.scrollTo({ top: chatbox.scrollHeight, behavior: 'smooth' });
 
     try {
       const response = await fetch("https://n8n-main-instance-production-96ac.up.railway.app/webhook/chat", {
