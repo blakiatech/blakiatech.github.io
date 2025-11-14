@@ -1,0 +1,66 @@
+---
+import '@/styles/global.css';
+import Header from '@/components/shared/Header.astro';
+import Footer from '@/components/shared/Footer.astro';
+import { ChatWidget } from '@/components/ChatWidget';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = 'BlakIA - Automatización con IA para tu negocio',
+  description = 'Transformamos tareas repetitivas y procesos manuales en sistemas inteligentes y eficientes 24/7.',
+  ogImage = '/og-image.jpg',
+  noindex = false
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://www.blakia.es');
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonicalURL}>
+  
+  {noindex && <meta name="robots" content="noindex, nofollow">}
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={`https://www.blakia.es${ogImage}`}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BlakIA">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={`https://www.blakia.es${ogImage}`}>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark bg-background text-foreground bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+  <Header />
+  <main class="pt-16">
+    <slot />
+  </main>
+  <Footer />
+  <ChatWidget client:load />
+</body>
+</html>
