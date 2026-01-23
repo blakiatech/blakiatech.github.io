@@ -1,0 +1,150 @@
+---
+import {
+  Menu,
+  X,
+  ChevronRight,
+  LayoutGrid,
+  Cpu,
+  MessageSquare,
+  Send,
+} from "lucide-react";
+
+const navItems = [
+  { name: "Casos de éxito", href: "/#case-studies", icon: LayoutGrid },
+  { name: "Servicios", href: "/#services", icon: Cpu },
+  { name: "Contacto", href: "/#contact", icon: Send },
+  { name: "Demo", href: "/chat", icon: MessageSquare, isDemo: true },
+];
+---
+
+<header
+  class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+>
+  <div class="container flex h-16 items-center justify-between px-4 mx-auto">
+    <div class="flex items-center gap-2">
+      <a
+        href="/#hero"
+        class="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+      >
+        <img
+          src="/logo_blakia.jpeg"
+          alt="BlakIA Logo"
+          class="h-14 w-auto object-contain"
+        />
+      </a>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-1">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-medium px-4 py-2 rounded-full transition-all duration-200 ${
+              item.isDemo
+                ? "bg-primary text-primary-foreground hover:bg-primary/90 ml-2"
+                : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+            }`}
+          >
+            {item.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <button
+      class="md:hidden p-2 rounded-lg hover:bg-primary/10 text-foreground transition-colors"
+      id="menu-toggle"
+      aria-label="Abrir menú"
+    >
+      <div id="icon-menu-open">
+        <Menu size={24} />
+      </div>
+      <div id="icon-menu-close" class="hidden">
+        <X size={24} />
+      </div>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute top-[65px] left-0 w-full border-b bg-background shadow-xl animate-in slide-in-from-top-2 duration-200"
+  >
+    <nav class="flex flex-col p-4 gap-2">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`flex items-center justify-between p-4 rounded-xl text-base font-medium transition-colors ${
+              item.isDemo
+                ? "bg-primary/10 text-primary border border-primary/20"
+                : "hover:bg-muted"
+            }`}
+          >
+            <div class="flex items-center gap-3">
+              <item.icon
+                size={18}
+                className={
+                  item.isDemo ? "text-primary" : "text-muted-foreground"
+                }
+              />
+              {item.name}
+            </div>
+            <ChevronRight size={16} className="opacity-50" />
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const iconOpen = document.getElementById("icon-menu-open");
+    const iconClose = document.getElementById("icon-menu-close");
+
+    if (!menuToggle || !mobileMenu || !iconOpen || !iconClose) return;
+
+    // Función para cerrar el menú
+    const closeMenu = () => {
+      mobileMenu.classList.add("hidden");
+      iconOpen.classList.remove("hidden");
+      iconClose.classList.add("hidden");
+    };
+
+    // Toggle del menú
+    menuToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isHidden = mobileMenu.classList.contains("hidden");
+
+      if (isHidden) {
+        mobileMenu.classList.remove("hidden");
+        iconOpen.classList.add("hidden");
+        iconClose.classList.remove("hidden");
+      } else {
+        closeMenu();
+      }
+    });
+
+    // Cerrar al hacer click en enlaces
+    const navLinks = mobileMenu.querySelectorAll("a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    // Cerrar al hacer click fuera
+    document.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (
+        !mobileMenu.contains(target) &&
+        !menuToggle.contains(target) &&
+        !mobileMenu.classList.contains("hidden")
+      ) {
+        closeMenu();
+      }
+    });
+  });
+</script>

@@ -1,0 +1,51 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+---
+
+<PageLayout
+  title="Demos de BlakIA"
+  description="Prueba nuestras demos de inteligencia artificial en tiempo real."
+>
+  <div class="container max-w-3xl mx-auto px-4 py-12 sm:py-24">
+    <div
+      class="relative group rounded-lg border bg-card text-card-foreground shadow-sm p-8 md:p-12 overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
+      >
+      </div>
+
+      <div class="relative z-10 text-center space-y-6">
+        <h1
+          class="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
+        >
+          Demos Interactivas
+        </h1>
+        <p
+          class="max-w-xl mx-auto text-lg text-muted-foreground leading-relaxed"
+        >
+          El chatbot que estaba aquí ahora está disponible en todas las páginas. <br
+          />
+          <span class="text-primary font-medium"
+            >¡Pronto añadiremos más demos aquí!</span
+          >
+        </p>
+
+        <div class="pt-8">
+          <div
+            class="inline-flex items-center justify-center rounded-full bg-muted px-4 py-1.5 text-sm font-medium text-muted-foreground"
+          >
+            <span class="relative flex h-2 w-2 mr-2">
+              <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+              ></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"
+              ></span>
+            </span>
+            Próximamente...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</PageLayout>

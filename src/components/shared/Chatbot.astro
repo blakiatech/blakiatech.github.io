@@ -1,0 +1,56 @@
+---
+import { MessageSquare, X } from "lucide-react";
+---
+
+<div
+  id="chat-bubble"
+  transition:persist
+  title="¿Tienes dudas?"
+  class="fixed bottom-5 right-5 w-[55px] h-[55px] bg-primary rounded-full flex items-center justify-center text-white cursor-pointer shadow-[0_4px_12px_rgba(0,0,0,0.3)] z-50 transition-transform duration-300 hover:scale-105 hover:bg-primary/90"
+>
+  <MessageSquare className="w-6 h-6" id="icon-chat" />
+  <X className="w-6 h-6 hidden" id="icon-close" />
+</div>
+<iframe
+  id="chat-iframe"
+  transition:persist
+  src="/chatbot"
+  class="fixed bottom-[90px] right-5 w-[360px] h-[500px] border-none rounded-[10px] shadow-[0_10px_30px_rgba(0,0,0,0.4)] z-50 hidden bg-[#111111]"
+></iframe>
+
+<script>
+  // Handles Chatbot logic globally
+  document.addEventListener("astro:page-load", () => {
+    const chatBubble = document.getElementById("chat-bubble");
+    const chatIframe = document.getElementById("chat-iframe");
+    const iconChat = document.getElementById("icon-chat");
+    const iconClose = document.getElementById("icon-close");
+    let isChatOpen = false;
+
+    if (!chatBubble || !chatIframe) return;
+
+    const toggleChat = () => {
+      isChatOpen = !isChatOpen;
+
+      if (isChatOpen) {
+        chatIframe.classList.remove("hidden");
+        iconChat?.classList.add("hidden");
+        iconClose?.classList.remove("hidden");
+      } else {
+        chatIframe.classList.add("hidden");
+        iconChat?.classList.remove("hidden");
+        iconClose?.classList.add("hidden");
+      }
+    };
+
+    chatBubble.addEventListener("click", toggleChat);
+
+    // Listen for close messages from iframe
+    window.addEventListener("message", (event) => {
+      if (event.data.closeChat) {
+        isChatOpen = true; // force toggle to close
+        toggleChat();
+      }
+    });
+  });
+</script>

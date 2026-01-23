@@ -1,0 +1,53 @@
+---
+import { Clock, Settings, TrendingUp } from "lucide-react";
+
+
+const benefits = [
+  {
+    title: "Ahorra tiempo y recursos",
+    description:
+      "Eliminamos tareas repetitivas como agendamiento, seguimiento, envío de correos...",
+    icon: Clock,
+  },
+  {
+    title: "Optimiza procesos",
+    description: "Operaciones clave con precisión.",
+    icon: Settings,
+  },
+  {
+    title: "Resultados visibles",
+    description: "Impacto desde el primer mes.",
+    icon: TrendingUp,
+  },
+];
+---
+
+<section class="py-20 bg-background text-white">
+  <div class="container">
+    <div class="text-center mb-16 relative">
+      <h2
+        class="text-4xl font-bold tracking-tight md:text-5xl mb-12 relative inline-block after:content-[''] after:absolute after:-bottom-4 after:left-1/2 after:-translate-x-1/2 after:w-[60px] after:h-[3px] after:bg-primary"
+      >
+        Beneficios Clave
+      </h2>
+    </div>
+
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-3">
+      {
+        benefits.map((benefit) => (
+          <div class="bg-[#111111] border border-[#333333] rounded-lg p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,102,255,0.1)] hover:border-primary group">
+            <div class="mb-6 flex justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+              <benefit.icon size={48} strokeWidth={1.5} />
+            </div>
+            <h3 class="text-2xl font-semibold mb-4 text-white">
+              {benefit.title}
+            </h3>
+            <p class="text-gray-400 text-lg leading-relaxed">
+              {benefit.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
