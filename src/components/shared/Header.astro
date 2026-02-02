@@ -1,0 +1,179 @@
+---
+import {
+  Menu,
+  X,
+  ChevronRight,
+  LayoutGrid,
+  Cpu,
+  MessageSquare,
+  Send,
+  Newspaper,
+  Sparkles,
+} from "lucide-react";
+
+const navItems = [
+  { name: "Servicios", href: "/#services", icon: Cpu },
+  { name: "Prensa", href: "/#press", icon: Newspaper },
+  // { name: "Casos de éxito", href: "/#case-studies", icon: LayoutGrid },
+  { name: "Beneficios", href: "/#benefits", icon: Sparkles },
+  { name: "Contacto", href: "/#contact", icon: Send },
+];
+---
+
+<header
+  id="main-header"
+  class="fixed top-0 z-50 w-full transition-all duration-300 border-b border-border bg-canvas/80 backdrop-blur-md"
+>
+  <div class="container flex h-20 items-center justify-between px-4 mx-auto">
+    <div class="flex items-center gap-2">
+      <a
+        href="/#hero"
+        class="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+      >
+        <img
+          src="/logo_blakIA2.png"
+          alt="BlakIA Logo"
+          class="h-10 w-auto object-contain rounded-sm"
+        />
+      </a>
+    </div>
+
+    <nav
+      class="hidden md:flex items-center gap-2 bg-muted/50 px-2 py-1 rounded-full border border-border"
+    >
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-medium px-5 py-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
+          >
+            {item.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden md:flex items-center gap-4">
+      <a
+        href="/chat"
+        class="inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-6 py-2 shadow-primary/20"
+      >
+        <span>Demo</span>
+      </a>
+    </div>
+
+    <button
+      class="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+      id="menu-toggle"
+      aria-label="Abrir menú"
+    >
+      <div id="icon-menu-open">
+        <Menu size={24} />
+      </div>
+      <div id="icon-menu-close" class="hidden">
+        <X size={24} />
+      </div>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute left-0 w-full border-b border-border bg-canvas shadow-2xl animate-in slide-in-from-top-2 duration-200"
+  >
+    <nav class="flex flex-col p-4 gap-2">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="group flex items-center justify-between p-4 rounded-xl text-base font-medium text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+          >
+            <div class="flex items-center gap-3">
+              <item.icon
+                size={18}
+                className="text-muted-foreground group-hover:text-primary transition-colors"
+              />
+              {item.name}
+            </div>
+            <ChevronRight
+              size={16}
+              className="opacity-50 group-hover:text-primary transition-colors"
+            />
+          </a>
+        ))
+      }
+      <a
+        href="/chat"
+        class="flex items-center justify-between p-4 rounded-xl text-base font-medium bg-primary/10 text-primary border border-primary/20 mt-2"
+      >
+        <div class="flex items-center gap-3">
+          <MessageSquare size={18} className="text-primary" />
+          Probar Demo
+        </div>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const iconOpen = document.getElementById("icon-menu-open");
+    const iconClose = document.getElementById("icon-menu-close");
+    const header = document.getElementById("main-header");
+
+    // Scroll effect
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) {
+        header?.classList.add("bg-canvas/80");
+        header?.classList.remove("bg-canvas/20");
+      } else {
+        header?.classList.remove("bg-canvas/80");
+        header?.classList.add("bg-canvas/20");
+      }
+    });
+
+    if (!menuToggle || !mobileMenu || !iconOpen || !iconClose) return;
+
+    // Función para cerrar el menú
+    const closeMenu = () => {
+      mobileMenu.classList.add("hidden");
+      iconOpen.classList.remove("hidden");
+      iconClose.classList.add("hidden");
+    };
+
+    // Toggle del menú
+    menuToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isHidden = mobileMenu.classList.contains("hidden");
+
+      if (isHidden) {
+        mobileMenu.classList.remove("hidden");
+        iconOpen.classList.add("hidden");
+        iconClose.classList.remove("hidden");
+      } else {
+        closeMenu();
+      }
+    });
+
+    // Cerrar al hacer click en enlaces
+    const navLinks = mobileMenu.querySelectorAll("a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    // Cerrar al hacer click fuera
+    document.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (
+        !mobileMenu.contains(target) &&
+        !menuToggle.contains(target) &&
+        !mobileMenu.classList.contains("hidden")
+      ) {
+        closeMenu();
+      }
+    });
+  });
+</script>

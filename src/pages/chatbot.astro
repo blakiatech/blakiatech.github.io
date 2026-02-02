@@ -1,0 +1,19 @@
+---
+import { Chatbot as ChatbotComponent } from "@/components/chat/Chatbot";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>ChatBot - BlakIA</title>
+    <link href="/src/styles/global.css" rel="stylesheet" />
+  </head>
+  <body class="h-full m-0 p-0 overflow-hidden font-sans bg-transparent">
+    <ChatbotComponent client:only="react" />
+  </body>
+</html>

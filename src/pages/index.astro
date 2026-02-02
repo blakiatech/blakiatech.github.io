@@ -1,0 +1,20 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import Hero from "@/components/sections/Hero.astro";
+import CaseStudies from "@/components/sections/CaseStudies.astro";
+import Services from "@/components/sections/Services.astro";
+import Benefits from "@/components/sections/Benefits.astro";
+import { ContactForm } from "@/components/sections/Contact";
+import { MediaMentions } from "@/components/sections/MediaMentions";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<PageLayout>
+  <Hero />
+  <Services />
+  <MediaMentions client:visible />
+  <!-- <CaseStudies /> -->
+  <Benefits />
+  <ContactForm client:load />
+</PageLayout>

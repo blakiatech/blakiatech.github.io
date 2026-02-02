@@ -1,0 +1,106 @@
+---
+import { InteractiveAvatarStack } from "@/components/ui/InteractiveAvatarStack";
+import { ArrowRight } from "lucide-react";
+import { cases, people, totalClients } from "@/data/caseStudies";
+---
+
+<section
+  id="case-studies"
+  class="py-24 bg-canvas text-foreground relative overflow-hidden"
+>
+  <div class="container relative px-4">
+    <div class="text-center mb-16 relative">
+      <h2
+        class="text-4xl font-bold tracking-tight md:text-5xl mb-6 text-foreground"
+      >
+        <span class="title-outline-purple">Casos de Éxito</span>
+      </h2>
+      <div class="h-1 w-20 bg-secondary rounded-full mx-auto mb-8"></div>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Resultados reales de empresas que ya han automatizado su negocio con
+        nosotros.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-20">
+      {
+        cases.map((item) => (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative block aspect-[4/5] overflow-hidden rounded-3xl bg-surface border border-border hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
+          >
+            {/* Imagen de fondo */}
+            <img
+              src={item.image.src}
+              alt={item.title}
+              class="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
+            />
+
+            {/* Overlay de gradiente */}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-500" />
+
+            <div class="absolute inset-0 flex flex-col justify-end p-8">
+              {/* Métrica Flotante */}
+              <div class="absolute top-6 left-6 transform -translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <span class="bg-secondary backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-secondary-foreground shadow-lg shadow-secondary/20">
+                  {item.metric}
+                </span>
+              </div>
+
+              {/* Icono Link */}
+              <div class="absolute top-6 right-6">
+                <div class="rounded-full bg-white/20 p-2 backdrop-blur-md border border-white/10 group-hover:bg-secondary group-hover:border-secondary group-hover:text-secondary-foreground text-white transition-all duration-300">
+                  <ArrowRight className="size-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                </div>
+              </div>
+
+              {/* Bloque de Texto */}
+              <div class="space-y-4 relative z-10">
+                <div class="space-y-2">
+                  <span class="text-secondary font-bold text-[10px] uppercase tracking-[0.2em] border border-secondary/20 px-2 py-1 rounded bg-secondary/10">
+                    {item.client}
+                  </span>
+                  <h3 class="text-2xl font-bold leading-tight text-white md:text-3xl tracking-tight">
+                    {item.title}
+                  </h3>
+                </div>
+
+                <p class="text-sm text-gray-300 leading-relaxed line-clamp-3 transform transition-all duration-500 group-hover:text-white">
+                  {item.description}
+                </p>
+
+                {/* Tags */}
+                <div class="flex flex-wrap gap-2 pt-2">
+                  {item.tags.map((tag) => (
+                    <span class="text-[9px] font-bold uppercase tracking-wider text-gray-300 border border-white/10 bg-black/50 px-2 py-1 rounded group-hover:border-secondary/50 group-hover:text-secondary transition-colors">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <div
+      class="flex flex-col items-center justify-center space-y-6 pt-8 border-t border-border"
+    >
+      <div class="w-full max-w-md">
+        <InteractiveAvatarStack
+          client:visible
+          items={people}
+          extraCount={totalClients}
+        />
+      </div>
+      <p class="text-muted-foreground text-sm font-medium">
+        Empresas optimizando procesos con <span
+          class="text-foreground font-bold">BlakIA</span
+        > este mes.
+      </p>
+    </div>
+  </div>
+</section>
