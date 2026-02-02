@@ -23,17 +23,14 @@ jobs:
       - name: Checkout your repository
         uses: actions/checkout@v4
       
-      - name: Change to page directory
-        run: cd page
-
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          if test -f "${{ github.workspace }}/page/yarn.lock"; then
+          if test -f "${{ github.workspace }}/yarn.lock"; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT
-          elif test -f "${{ github.workspace }}/page/package.json"; then
+          elif test -f "${{ github.workspace }}/package.json"; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
@@ -46,26 +43,24 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: page/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Restore cache
         uses: actions/cache@v3
         with:
           path: |
-            page/dist
-            page/.astro
-          key: ${{ runner.os }}-astro-${{ hashFiles('**/lockfiles/package-lock.json', '**/lockfiles/yarn.lock', '**/lockfiles/pnpm-lock.yaml') }}
+            dist
+            .astro
+          key: ${{ runner.os }}-astro-${{ hashFiles('package-lock.json', 'yarn.lock', 'pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-astro-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-        working-directory: ./page
       - name: Build with Astro
         run: ${{ steps.detect-package-manager.outputs.runner }} astro build
-        working-directory: ./page
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./page/dist
+          path: ./dist
 
   deploy:
     environment:
