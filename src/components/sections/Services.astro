@@ -1,79 +1,52 @@
 ---
-import {
-  Headphones,
-  MessageSquare,
-  TrendingUp,
-  Phone,
-  Clock,
-  Sparkles,
-} from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-const services = [
-  {
-    title: "Soporte 24/7",
-    description:
-      "Atención automática, integración personalizada y flujos automatizados.",
-    icon: Headphones,
-  },
-  {
-    title: "Reduce carga operativa",
-    description: "WhatsApp, Web, Instagram...",
-    icon: MessageSquare,
-  },
-  {
-    title: "Incrementa ventas",
-    description: "Leads cualificados automáticamente.",
-    icon: TrendingUp,
-  },
-  {
-    title: "Llamada telefónica",
-    description: "Consultas sin manos integradas en llamadas reales.",
-    icon: Phone,
-  },
-  {
-    title: "Disponibilidad total",
-    description: "Ejecutan tareas, responden o controlan sistemas 24/7.",
-    icon: Clock,
-  },
-  {
-    title: "Innovación real",
-    description: "UX con voz como canal principal.",
-    icon: Sparkles,
-  },
-];
+import { services } from "@/data/services"
 ---
 
-<section id="services" class="py-20 lg:py-24 bg-background">
-  <div class="container">
+<section id="services" class="py-24 bg-canvas relative overflow-hidden">
+  {/* Background glow */}
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/10 blur-[120px] rounded-full -z-10"
+  >
+  </div>
+
+  <div class="container px-4">
     <div class="text-center mb-16 relative">
       <h2
-        class="text-4xl font-bold tracking-tight md:text-5xl mb-12 relative inline-block after:content-[''] after:absolute after:-bottom-4 after:left-1/2 after:-translate-x-1/2 after:w-[60px] after:h-[3px] after:bg-primary"
+        class="text-4xl font-bold tracking-tight md:text-5xl mb-12 relative inline-block after:content-[''] after:absolute after:-bottom-4 after:left-1/2 after:-translate-x-1/2 after:w-[120px] after:h-[3px] after:bg-primary"
       >
         Lo que hacemos por tu negocio
       </h2>
+      <p class="text-muted-foreground max-w-2xl mx-auto text-lg">
+        Soluciones diseñadas para escalar tu operación sin aumentar tus costes
+        fijos.
+      </p>
     </div>
 
-    <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {
-        services.map((service) => (
-          <Card className="bg-[#111111] border border-[#333333] hover:border-primary hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,102,255,0.1)] transition-all duration-300 rounded-lg p-2 h-full text-center flex flex-col items-center">
-            <CardHeader className="flex flex-col items-center pb-2">
-              <div class="mb-4 text-primary">
-                <service.icon size={48} strokeWidth={1.5} />
+    {/* Single Glass Dashboard Card */}
+    <div class="max-w-5xl mx-auto">
+      <div
+        class="bg-surface/40 backdrop-blur-md border border-white/5 rounded-3xl p-8 md:p-12 shadow-2xl shadow-black/50"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          {
+            services.map((service) => (
+              <div class="flex gap-5 items-start group">
+                <div class="shrink-0 p-3 rounded-xl bg-primary/20 text-primary border border-primary/10 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary/50 transition-all duration-500">
+                  <service.icon className="size-6" strokeWidth={1.5} />
+                </div>
+                <div class="space-y-1">
+                  <h3 class="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p class="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground transition-colors">
+                    {service.description}
+                  </p>
+                </div>
               </div>
-              <CardTitle className="text-2xl font-semibold mb-2">
-                {service.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p class="text-gray-400 text-lg leading-relaxed">
-                {service.description}
-              </p>
-            </CardContent>
-          </Card>
-        ))
-      }
+            ))
+          }
+        </div>
+      </div>
     </div>
   </div>
 </section>

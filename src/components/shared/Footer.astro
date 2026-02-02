@@ -1,10 +1,11 @@
 ---
 import { SocialLinks } from "./SocialLinks";
-const base = import.meta.env.BASE_URL;
 
 const QUICK_LINKS = [
   { name: "Servicios", href: "/#services" },
-  { name: "Casos de éxito", href: "/#case-studies" },
+  { name: "Prensa", href: "/#press" },
+  // { name: "Casos de éxito", href: "/#case-studies" },
+  { name: "Beneficios", href: "/#benefits" },
   { name: "Contacto", href: "/#contact" },
 ];
 
@@ -15,99 +16,137 @@ const LEGAL_LINKS = [
 ];
 ---
 
-<footer class="border-t bg-muted/30 pt-16 pb-8">
-  <div class="container">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-      {/* Brand Column */}
-      <div class="space-y-4">
-        <a
-          href="/#hero"
-          class="flex items-center gap-2 font-bold text-xl"
-        >
-          <img
-            src="/logo_blakia.jpeg"
-            alt="BlakIA Logo"
-            class="h-10 w-auto object-contain"
-          />
-        </a>
-        <p class="text-muted-foreground text-sm leading-relaxed">
-          Transformando negocios a través de soluciones de Inteligencia
-          Artificial innovadoras y personalizadas.
-        </p>
-        <SocialLinks />
+<footer
+  class="relative border-t border-border bg-gradient-to-b from-white to-gray-50/50 pt-24 pb-12 overflow-hidden"
+>
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl opacity-40"
+    >
+      <div
+        class="absolute top-[20%] left-[5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"
+      >
       </div>
-
-      {/* Navigation Column */}
-      <div class="space-y-4">
-        <h3 class="font-semibold text-foreground">Enlaces Rápidos</h3>
-        <ul class="space-y-2 text-sm">
-          {
-            QUICK_LINKS.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+      <div
+        class="absolute bottom-[10%] right-[5%] w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[80px]"
+      >
       </div>
+    </div>
+  </div>
 
-      {/* Legal Column */}
-      <div class="space-y-4">
-        <h3 class="font-semibold text-foreground">Legal</h3>
-        <ul class="space-y-2 text-sm">
-          {
-            LEGAL_LINKS.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+  <div class="container relative z-10 px-4 mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
+      <!-- Brand Column -->
+      <div class="lg:col-span-5 space-y-8">
+        <div class="space-y-4">
+          <a href="/#hero" class="flex items-center gap-2 group w-fit">
+            <img
+              src="/logo_blakIA2.png"
+              alt="BlakIA Logo"
+              class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          </a>
+          <p
+            class="text-muted-foreground text-base leading-relaxed max-w-md text-balance"
+          >
+            Impulsamos el futuro de tu negocio integrando soluciones de
+            <span class="text-foreground font-medium"
+              >Inteligencia Artificial</span
+            >
+            que optimizan, automatizan y escalan tus operaciones.
+          </p>
+        </div>
 
-      {/* Partners Column */}
-      <div class="space-y-4">
-        <h3 class="font-semibold text-foreground">Con el apoyo de</h3>
-        <div class="flex flex-row gap-4">
+        <!-- Partner Cards Container -->
+        <div class="flex flex-wrap items-center gap-2">
           <div
-            class="bg-background/50 p-3 rounded-lg border border-border/50 w-fit"
+            class="group/card bg-black p-2 rounded-xl border border-transparent hover:border-primary/20 transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-lg hover:-translate-y-1"
           >
             <img
-              src={"/el-patio-completo-logo-negativo.svg"}
+              src="/el-patio-completo-logo-negativo.svg"
               alt="El Patio"
-              class="h-18 w-auto opacity-90 hover:opacity-100 transition-opacity dark:invert-0"
+              class="h-full w-52 object-contain p-2"
             />
           </div>
+
           <div
-            class="bg-background/50 p-3 rounded-lg border border-border/50 w-fit"
+            class="group/card bg-white p-2 rounded-xl border border-border/50 hover:border-primary/20 transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-lg hover:-translate-y-1"
           >
             <img
-              src={"/IMDEEC-Pegatinas-2025-Autoempleo-L1.jpg"}
+              src="/IMDEEC-Pegatinas-2025-Autoempleo-L1.jpg"
               alt="IMDEEC"
-              class="h-18 w-auto opacity-90 hover:opacity-100 transition-opacity rounded-sm"
+              class="h-full w-52 object-contain"
             />
           </div>
         </div>
       </div>
+
+      <!-- Spacer -->
+      <div class="hidden lg:block lg:col-span-1"></div>
+
+      <!-- Navigation Columns -->
+      <div class="lg:col-span-6 grid grid-cols-2 sm:grid-cols-2 gap-10">
+        <div class="space-y-6">
+          <h3 class="text-lg font-bold text-foreground relative inline-block">
+            Explorar
+            <span
+              class="absolute -bottom-2 left-0 w-8 h-1 bg-primary rounded-full"
+            ></span>
+          </h3>
+          <ul class="space-y-4">
+            {
+              QUICK_LINKS.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-muted-foreground hover:text-primary transition-colors text-[15px] hover:translate-x-1 inline-block duration-200"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="space-y-6">
+          <h3 class="text-lg font-bold text-foreground relative inline-block">
+            Legal
+            <span
+              class="absolute -bottom-2 left-0 w-8 h-1 bg-secondary rounded-full"
+            ></span>
+          </h3>
+          <ul class="space-y-4">
+            {
+              LEGAL_LINKS.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-muted-foreground hover:text-primary transition-colors text-[15px] hover:translate-x-1 inline-block duration-200"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
     </div>
 
-    {/* Bottom Bar */}
+    <!-- Footer Bottom -->
     <div
-      class="border-t border-border/50 pt-8 mt-8 text-center text-sm text-muted-foreground"
+      class="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground"
     >
-      <p>
-        &copy; {new Date().getFullYear()} BlakIA. Todos los derechos reservados.
+      <p class="flex items-center gap-1">
+        &copy; {new Date().getFullYear()}
+        <span class="font-bold text-foreground">BlakIA</span>. Todos los
+        derechos reservados.
       </p>
+      <div>
+        <SocialLinks />
+      </div>
     </div>
   </div>
 </footer>

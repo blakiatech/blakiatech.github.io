@@ -7,43 +7,45 @@ import {
   Cpu,
   MessageSquare,
   Send,
+  Newspaper,
+  Sparkles,
 } from "lucide-react";
 
 const navItems = [
-  { name: "Casos de éxito", href: "/#case-studies", icon: LayoutGrid },
   { name: "Servicios", href: "/#services", icon: Cpu },
+  { name: "Prensa", href: "/#press", icon: Newspaper },
+  // { name: "Casos de éxito", href: "/#case-studies", icon: LayoutGrid },
+  { name: "Beneficios", href: "/#benefits", icon: Sparkles },
   { name: "Contacto", href: "/#contact", icon: Send },
-  { name: "Demo", href: "/chat", icon: MessageSquare, isDemo: true },
 ];
 ---
 
 <header
-  class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+  id="main-header"
+  class="fixed top-0 z-50 w-full transition-all duration-300 border-b border-border bg-canvas/80 backdrop-blur-md"
 >
-  <div class="container flex h-16 items-center justify-between px-4 mx-auto">
+  <div class="container flex h-20 items-center justify-between px-4 mx-auto">
     <div class="flex items-center gap-2">
       <a
         href="/#hero"
         class="flex items-center space-x-2 hover:opacity-80 transition-opacity"
       >
         <img
-          src="/logo_blakia.jpeg"
+          src="/logo_blakIA2.png"
           alt="BlakIA Logo"
-          class="h-14 w-auto object-contain"
+          class="h-10 w-auto object-contain rounded-sm"
         />
       </a>
     </div>
 
-    <nav class="hidden md:flex items-center gap-1">
+    <nav
+      class="hidden md:flex items-center gap-2 bg-muted/50 px-2 py-1 rounded-full border border-border"
+    >
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class={`text-sm font-medium px-4 py-2 rounded-full transition-all duration-200 ${
-              item.isDemo
-                ? "bg-primary text-primary-foreground hover:bg-primary/90 ml-2"
-                : "text-muted-foreground hover:text-primary hover:bg-primary/5"
-            }`}
+            class="text-sm font-medium px-5 py-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
           >
             {item.name}
           </a>
@@ -51,8 +53,17 @@ const navItems = [
       }
     </nav>
 
+    <div class="hidden md:flex items-center gap-4">
+      <a
+        href="/chat"
+        class="inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-6 py-2 shadow-primary/20"
+      >
+        <span>Demo</span>
+      </a>
+    </div>
+
     <button
-      class="md:hidden p-2 rounded-lg hover:bg-primary/10 text-foreground transition-colors"
+      class="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
       id="menu-toggle"
       aria-label="Abrir menú"
     >
@@ -67,32 +78,38 @@ const navItems = [
 
   <div
     id="mobile-menu"
-    class="hidden md:hidden absolute top-[65px] left-0 w-full border-b bg-background shadow-xl animate-in slide-in-from-top-2 duration-200"
+    class="hidden md:hidden absolute left-0 w-full border-b border-border bg-canvas shadow-2xl animate-in slide-in-from-top-2 duration-200"
   >
     <nav class="flex flex-col p-4 gap-2">
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class={`flex items-center justify-between p-4 rounded-xl text-base font-medium transition-colors ${
-              item.isDemo
-                ? "bg-primary/10 text-primary border border-primary/20"
-                : "hover:bg-muted"
-            }`}
+            class="group flex items-center justify-between p-4 rounded-xl text-base font-medium text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
           >
             <div class="flex items-center gap-3">
               <item.icon
                 size={18}
-                className={
-                  item.isDemo ? "text-primary" : "text-muted-foreground"
-                }
+                className="text-muted-foreground group-hover:text-primary transition-colors"
               />
               {item.name}
             </div>
-            <ChevronRight size={16} className="opacity-50" />
+            <ChevronRight
+              size={16}
+              className="opacity-50 group-hover:text-primary transition-colors"
+            />
           </a>
         ))
       }
+      <a
+        href="/chat"
+        class="flex items-center justify-between p-4 rounded-xl text-base font-medium bg-primary/10 text-primary border border-primary/20 mt-2"
+      >
+        <div class="flex items-center gap-3">
+          <MessageSquare size={18} className="text-primary" />
+          Probar Demo
+        </div>
+      </a>
     </nav>
   </div>
 </header>
@@ -103,6 +120,18 @@ const navItems = [
     const mobileMenu = document.getElementById("mobile-menu");
     const iconOpen = document.getElementById("icon-menu-open");
     const iconClose = document.getElementById("icon-menu-close");
+    const header = document.getElementById("main-header");
+
+    // Scroll effect
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) {
+        header?.classList.add("bg-canvas/80");
+        header?.classList.remove("bg-canvas/20");
+      } else {
+        header?.classList.remove("bg-canvas/80");
+        header?.classList.add("bg-canvas/20");
+      }
+    });
 
     if (!menuToggle || !mobileMenu || !iconOpen || !iconClose) return;
 

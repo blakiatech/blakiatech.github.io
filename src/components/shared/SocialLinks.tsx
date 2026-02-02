@@ -1,11 +1,6 @@
-import { Github, Linkedin, Instagram } from "lucide-react";
+import { Linkedin, Instagram } from "lucide-react";
 
 const SOCIAL_LINKS = [
-    {
-        name: "GitHub",
-        href: "https://github.com/blakiatech",
-        icon: Github,
-    },
     {
         name: "LinkedIn",
         href: "https://www.linkedin.com/company/blakiatech",

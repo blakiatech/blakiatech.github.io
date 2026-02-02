@@ -1,3 +1,7 @@
+---
+trigger: manual
+---
+
 # Proyecto: Landing Page con Astro + React
 
 ## 1. Descripción del Proyecto
