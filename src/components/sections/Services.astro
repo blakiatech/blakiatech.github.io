@@ -1,52 +1,87 @@
 ---
 import { services } from "@/data/services"
+import { cn } from "@/lib/utils"
 ---
 
-<section id="services" class="py-24 bg-canvas relative overflow-hidden">
-  {/* Background glow */}
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/10 blur-[120px] rounded-full -z-10"
-  >
+<section id="services" class="py-32 relative overflow-hidden bg-background dark:bg-zinc-950 text-foreground dark:text-white transition-colors duration-300">
+  {/* Background with noise */}
+  <div class="absolute inset-0 bg-background dark:bg-zinc-950 transition-colors duration-300">
+    <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] mix-blend-overlay" style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;);"></div>
+    {/* Subtle gradient blob */}
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 dark:bg-primary/20 blur-[120px] rounded-full -z-10 opacity-50"></div>
   </div>
 
-  <div class="container px-4">
-    <div class="text-center mb-16 relative">
-      <h2
-        class="text-4xl font-bold tracking-tight md:text-5xl mb-12 relative inline-block after:content-[''] after:absolute after:-bottom-4 after:left-1/2 after:-translate-x-1/2 after:w-[120px] after:h-[3px] after:bg-primary"
-      >
-        Lo que hacemos por tu negocio
+  <div class="container px-4 relative z-10">
+    <div class="text-center mb-20 max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary-foreground dark:text-secondary text-xs font-medium uppercase tracking-wider mb-6 backdrop-blur-md">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+        </span>
+        Capacidades del Sistema
+      </div>
+      
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground dark:text-white mb-6">
+        Automatización <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-600 to-purple-400 dark:from-primary dark:via-purple-500 dark:to-purple-300">Inteligente</span>
       </h2>
-      <p class="text-muted-foreground max-w-2xl mx-auto text-lg">
-        Soluciones diseñadas para escalar tu operación sin aumentar tus costes
-        fijos.
+      <p class="text-xl text-muted-foreground dark:text-zinc-400 leading-relaxed">
+        Despliega agentes autónomos que trabajan 24/7 para escalar tu operación sin fricción.
       </p>
     </div>
 
-    {/* Single Glass Dashboard Card */}
-    <div class="max-w-5xl mx-auto">
-      <div
-        class="bg-surface/40 backdrop-blur-md border border-white/5 rounded-3xl p-8 md:p-12 shadow-2xl shadow-black/50"
-      >
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-          {
-            services.map((service) => (
-              <div class="flex gap-5 items-start group">
-                <div class="shrink-0 p-3 rounded-xl bg-primary/20 text-primary border border-primary/10 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary/50 transition-all duration-500">
-                  <service.icon className="size-6" strokeWidth={1.5} />
-                </div>
-                <div class="space-y-1">
-                  <h3 class="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 auto-rows-[280px]">
+      {
+        services.map((service, index) => {
+          // Bento Grid Layout Logic
+          // 0: Span 2 (Large)
+          // 3: Span 2 (Large)
+          // 4: Span 2 (Large)
+          const isLarge = [0, 3, 4].includes(index);
+          const colSpan = isLarge ? "md:col-span-2" : "md:col-span-1";
+          
+          return (
+            <div 
+              class={cn(
+                "group relative overflow-hidden rounded-3xl border border-border/40 dark:border-white/5 bg-white/60 dark:bg-white/5 backdrop-blur-sm p-8 transition-all duration-500 hover:border-secondary/50 dark:hover:border-secondary/50 hover:bg-white dark:hover:bg-zinc-900/80 hover:shadow-[0_0_40px_-10px_rgba(238,255,6,0.15)]",
+                colSpan
+              )}
+            >
+              {/* Technical Corner Markers */}
+              <div class="absolute top-4 right-4 text-muted-foreground/20 dark:text-white/10 group-hover:text-secondary/50 transition-colors duration-500">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 6H12M6 0V12" stroke="currentColor" stroke-width="1"/>
+                </svg>
+              </div>
+
+              {/* Gradient Hover Effect */}
+              <div class="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <div class="relative h-full flex flex-col justify-between z-10">
+                <div>
+                  <div class="w-14 h-14 rounded-2xl bg-muted dark:bg-zinc-900 border border-border/50 dark:border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-secondary/50 group-hover:bg-secondary/10 transition-all duration-500 shadow-sm dark:shadow-xl relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <service.icon className="size-7 text-foreground dark:text-white group-hover:text-primary dark:group-hover:text-secondary transition-colors duration-500 relative z-10" strokeWidth={1.5} />
+                  </div>
+                  
+                  <h3 class="text-2xl font-bold text-foreground dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-secondary transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p class="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground transition-colors">
+                  
+                  <p class="text-muted-foreground dark:text-zinc-400 text-base leading-relaxed group-hover:text-foreground/80 dark:group-hover:text-zinc-300 transition-colors">
                     {service.description}
                   </p>
                 </div>
+
+                {/* Bottom decorative line/number */}
+                <div class="flex items-center justify-between pt-4 mt-auto border-t border-border/50 dark:border-white/5 group-hover:border-secondary/20 transition-colors">
+                  <span class="text-xs font-mono text-muted-foreground/50 dark:text-white/20 group-hover:text-primary/60 dark:group-hover:text-secondary/60">0{index + 1}</span>
+                  <div class="w-12 h-[1px] bg-border dark:bg-white/10 group-hover:bg-primary/50 dark:group-hover:bg-secondary/50 transition-colors"></div>
+                </div>
               </div>
-            ))
-          }
-        </div>
-      </div>
+            </div>
+          )
+        })
+      }
     </div>
   </div>
 </section>
