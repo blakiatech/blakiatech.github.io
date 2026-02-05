@@ -10,9 +10,7 @@ import GridPattern from "@/components/ui/GridPattern.astro";
   class="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20"
 >
   {/* Modern Gradient Background - Transparent to show Global Layout */}
-  <div class="absolute inset-0 w-full h-full bg-transparent">
-    {/* Local orbs removed to use global ones */}
-  </div>
+  <div class="absolute inset-0 w-full h-full bg-transparent"></div>
 
   {/* Grid Pattern Overlay */}
   <GridPattern />
@@ -55,7 +53,7 @@ import GridPattern from "@/components/ui/GridPattern.astro";
         Empezar ahora
         <ArrowRight className="ml-2 size-5" />
       </a>
-      <a
+      <!-- <a
         href="#case-studies"
         class={cn(
           buttonVariants({ variant: "outline", size: "lg" }),
@@ -63,7 +61,7 @@ import GridPattern from "@/components/ui/GridPattern.astro";
         )}
       >
         Ver casos de éxito
-      </a>
+      </a> -->
     </div>
 
     {/* Tech Stack / Social Proof Strip (Optional but adds credibility) */}

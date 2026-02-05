@@ -10,6 +10,7 @@ import {
   Newspaper,
   Sparkles,
 } from "lucide-react";
+import { ModeToggle } from "@/components/ModeToggle";
 
 const navItems = [
   { name: "Servicios", href: "/#services", icon: Cpu },
@@ -24,7 +25,10 @@ const navItems = [
   id="main-header"
   class="fixed top-0 z-50 w-full transition-all duration-300 border-b border-border bg-canvas/80 backdrop-blur-md"
 >
-  <div class="container flex h-20 items-center justify-between px-4 mx-auto">
+  <div
+    class="container relative flex h-20 items-center justify-between px-4 mx-auto"
+  >
+    <!-- Left: Logo -->
     <div class="flex items-center gap-2">
       <a
         href="/#hero"
@@ -33,19 +37,25 @@ const navItems = [
         <img
           src="/logo_blakIA2.png"
           alt="BlakIA Logo"
-          class="h-10 w-auto object-contain rounded-sm"
+          class="h-10 w-auto object-contain rounded-sm dark:hidden"
+        />
+        <img
+          src="/logo_blakIA.png"
+          alt="BlakIA Logo"
+          class="h-10 w-auto object-contain rounded-sm hidden dark:block"
         />
       </a>
     </div>
 
+    <!-- Center: Desktop Nav (Absolute) -->
     <nav
-      class="hidden md:flex items-center gap-2 bg-muted/50 px-2 py-1 rounded-full border border-border"
+      class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-1 bg-muted/50 px-2 py-1 rounded-full border border-border"
     >
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="text-sm font-medium px-5 py-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
+            class="text-sm font-medium px-4 py-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
           >
             {item.name}
           </a>
@@ -53,27 +63,33 @@ const navItems = [
       }
     </nav>
 
-    <div class="hidden md:flex items-center gap-4">
+    <!-- Right: Actions (Toggle + Demo + Mobile Menu) -->
+    <div class="flex items-center gap-2 md:gap-4">
+      <!-- Toggle (Visible on Desktop & Mobile) -->
+      <ModeToggle client:load />
+
+      <!-- Demo Button (Desktop Only) -->
       <a
         href="/chat"
-        class="inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-6 py-2 shadow-primary/20"
+        class="hidden md:inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-6 py-2 shadow-primary/20"
       >
         <span>Demo</span>
       </a>
-    </div>
 
-    <button
-      class="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
-      id="menu-toggle"
-      aria-label="Abrir menú"
-    >
-      <div id="icon-menu-open">
-        <Menu size={24} />
-      </div>
-      <div id="icon-menu-close" class="hidden">
-        <X size={24} />
-      </div>
-    </button>
+      <!-- Mobile Hamburger (Mobile Only) -->
+      <button
+        class="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+        id="menu-toggle"
+        aria-label="Abrir menú"
+      >
+        <div id="icon-menu-open">
+          <Menu size={24} />
+        </div>
+        <div id="icon-menu-close" class="hidden">
+          <X size={24} />
+        </div>
+      </button>
+    </div>
   </div>
 
   <div

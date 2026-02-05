@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
 
 @plugin "tailwindcss-animate";
 @plugin "@tailwindcss/typography";
@@ -7,44 +8,44 @@
   /* Semantic Tokens based on new palette */
   --background: hsl(0 0% 98%); /* #FAFAFA */
   --foreground: hsl(240 10% 3.9%); /* #09090b */
-  
+
   --card: hsl(0 0% 100%); /* #FFFFFF */
   --card-foreground: hsl(240 10% 3.9%);
-  
+
   --popover: hsl(0 0% 100%); /* #FFFFFF */
   --popover-foreground: hsl(240 10% 3.9%);
-  
+
   --primary: hsl(261 85% 51%); /* #5E17EB */
   --primary-foreground: hsl(0 0% 98%);
-  
+
   --secondary: hsl(64 100% 51%); /* #EEFF06 */
   --secondary-foreground: hsl(240 10% 3.9%);
-  
+
   --muted: hsl(240 4.8% 95.9%);
   --muted-foreground: hsl(240 3.8% 46.1%);
-  
+
   --accent: hsl(64 100% 51%); /* #EEFF06 */
   --accent-foreground: hsl(240 10% 3.9%);
-  
+
   --destructive: hsl(0 84.2% 60.2%);
   --destructive-foreground: hsl(0 0% 98%);
-  
+
   --border: hsl(240 5.9% 90%);
   --input: hsl(240 5.9% 90%);
   --ring: hsl(261 85% 51%); /* Purple */
-  
+
   --radius: 0.5rem;
-  
+
   --chart-1: hsl(261 85% 51%);
   --chart-2: hsl(64 100% 51%);
   --chart-3: hsl(197 37% 24%);
   --chart-4: hsl(43 74% 66%);
   --chart-5: hsl(27 87% 67%);
-  
+
   /* Custom Tokens */
   --shadow-glow-purple: 0 0 20px rgba(94, 23, 235, 0.3);
   --grid-pattern: #80808012;
-  
+
   /* Semantic Aliases */
   --canvas: var(--background);
   --surface: var(--card);
@@ -102,12 +103,12 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
-  
+
   --font-sans: Inter, sans-serif;
-  
+
   --shadow-glow: var(--shadow-glow-purple);
   --color-grid: var(--grid-pattern);
-  
+
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
 }
@@ -116,13 +117,13 @@
   -webkit-text-stroke: 1px var(--primary);
   color: transparent;
   background-clip: text;
-  background-image: linear-gradient(to right, var(--primary), #8B5CF6);
+  background-image: linear-gradient(to right, var(--primary), #8b5cf6);
 }
 
 @utility container {
   margin-inline: auto;
   padding-inline: 1rem;
-  
+
   @media (width >= 1200px) {
     max-width: 1200px;
   }

@@ -17,7 +17,7 @@ const LEGAL_LINKS = [
 ---
 
 <footer
-  class="relative border-t border-border bg-gradient-to-b from-white to-gray-50/50 pt-24 pb-12 overflow-hidden"
+  class="relative border-t border-border bg-muted/20 pt-24 pb-12 overflow-hidden"
 >
   <!-- Decorative Elements -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -25,11 +25,11 @@ const LEGAL_LINKS = [
       class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl opacity-40"
     >
       <div
-        class="absolute top-[20%] left-[5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"
+        class="absolute top-[20%] left-[5%] w-125 h-125 bg-primary/5 rounded-full blur-[100px]"
       >
       </div>
       <div
-        class="absolute bottom-[10%] right-[5%] w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[80px]"
+        class="absolute bottom-[10%] right-[5%] w-100 h-100 bg-secondary/10 rounded-full blur-[80px]"
       >
       </div>
     </div>
@@ -44,7 +44,12 @@ const LEGAL_LINKS = [
             <img
               src="/logo_blakIA2.png"
               alt="BlakIA Logo"
-              class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 dark:hidden"
+            />
+            <img
+              src="/logo_blakIA.png"
+              alt="BlakIA Logo"
+              class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 hidden dark:block"
             />
           </a>
           <p
@@ -76,7 +81,7 @@ const LEGAL_LINKS = [
             <img
               src="/IMDEEC-Pegatinas-2025-Autoempleo-L1.jpg"
               alt="IMDEEC"
-              class="h-full w-52 object-contain"
+              class="h-full w-52 object-contain rounded-lg"
             />
           </div>
         </div>
