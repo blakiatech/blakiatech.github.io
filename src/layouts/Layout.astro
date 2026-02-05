@@ -81,7 +81,9 @@ const base = import.meta.env.BASE_URL;
         // return window.matchMedia("(prefers-color-scheme: dark)").matches
         //   ? "dark"
         //   : "light";
-        return "light";
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
       };
 
       const setDarkMode = () => {

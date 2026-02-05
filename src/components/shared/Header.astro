@@ -3,7 +3,6 @@ import {
   Menu,
   X,
   ChevronRight,
-  LayoutGrid,
   Cpu,
   MessageSquare,
   Send,
@@ -13,183 +12,222 @@ import {
 import { ModeToggle } from "@/components/ModeToggle";
 
 const navItems = [
+  { name: "Beneficios", href: "/#benefits", icon: Sparkles },
   { name: "Servicios", href: "/#services", icon: Cpu },
   { name: "Prensa", href: "/#press", icon: Newspaper },
-  // { name: "Casos de éxito", href: "/#case-studies", icon: LayoutGrid },
-  { name: "Beneficios", href: "/#benefits", icon: Sparkles },
-  { name: "Contacto", href: "/#contact", icon: Send },
+  { name: "Contacto", href: "/contacto", icon: Send },
 ];
 ---
 
 <header
   id="main-header"
-  class="fixed top-0 z-50 w-full transition-all duration-300 border-b border-border bg-canvas/80 backdrop-blur-md"
+  class="fixed top-0 z-50 w-full transition-all duration-500 border-b border-transparent bg-background/80 backdrop-blur-md"
 >
   <div
-    class="container relative flex h-20 items-center justify-between px-4 mx-auto"
+    class="container relative flex h-20 items-center justify-between px-6 mx-auto"
   >
     <!-- Left: Logo -->
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-2 relative z-50">
       <a
-        href="/#hero"
-        class="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+        href="/"
+        class="flex items-center space-x-2 hover:opacity-80 transition-opacity group"
       >
         <img
           src="/logo_blakIA_light.png"
           alt="BlakIA Logo"
-          class="h-10 w-auto object-contain rounded-sm dark:hidden"
+          class="h-9 w-auto object-contain rounded-sm dark:hidden group-hover:scale-105 transition-transform duration-300"
         />
         <img
           src="/logo_blakIA_dark.png"
           alt="BlakIA Logo"
-          class="h-10 w-auto object-contain rounded-sm hidden dark:block"
+          class="h-9 w-auto object-contain rounded-sm hidden dark:block group-hover:scale-105 transition-transform duration-300"
         />
       </a>
     </div>
 
-    <!-- Center: Desktop Nav (Absolute) -->
+    <!-- Center: Desktop Nav (Floating Capsule) -->
     <nav
-      class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-1 bg-muted/50 px-2 py-1 rounded-full border border-border"
+      class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-1 bg-background/60 backdrop-blur-xl px-2 py-1.5 rounded-full border border-border/40 shadow-sm ring-1 ring-white/5"
     >
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="text-sm font-medium px-4 py-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
+            class="relative text-sm font-medium px-5 py-2 rounded-full text-muted-foreground hover:text-foreground transition-all duration-300 group overflow-hidden"
           >
-            {item.name}
+            <span class="relative z-10">{item.name}</span>
+            {/* Hover Background */}
+            <span class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
           </a>
         ))
       }
     </nav>
 
-    <!-- Right: Actions (Toggle + Demo + Mobile Menu) -->
-    <div class="flex items-center gap-2 md:gap-4">
-      <!-- Toggle (Visible on Desktop & Mobile) -->
+    <!-- Right: Actions -->
+    <div class="flex items-center gap-3 relative z-50">
+      <!-- Toggle -->
       <ModeToggle client:load />
 
-      <!-- Demo Button (Desktop Only) -->
+      <!-- Demo Button (Desktop) -->
       <a
         href="/chat"
-        class="hidden md:inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-6 py-2 shadow-primary/20"
+        class="hidden md:inline-flex items-center justify-center rounded-full text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow-[0_0_15px_rgba(94,23,235,0.3)] hover:shadow-[0_0_25px_rgba(94,23,235,0.5)] hover:bg-primary/90 h-9 px-5 hover:-translate-y-0.5 active:translate-y-0 duration-300"
       >
         <span>Demo</span>
       </a>
 
-      <!-- Mobile Hamburger (Mobile Only) -->
+      <!-- Mobile Hamburger -->
       <button
-        class="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+        class="md:hidden p-2.5 rounded-full text-foreground hover:bg-muted transition-colors border border-transparent hover:border-border relative z-50"
         id="menu-toggle"
         aria-label="Abrir menú"
       >
-        <div id="icon-menu-open">
-          <Menu size={24} />
+        <div id="icon-menu-open" class="transition-transform duration-300">
+          <Menu size={22} />
         </div>
-        <div id="icon-menu-close" class="hidden">
-          <X size={24} />
+        <div id="icon-menu-close" class="hidden transition-transform duration-300 rotate-90">
+          <X size={22} />
         </div>
       </button>
     </div>
   </div>
+</header>
 
-  <div
-    id="mobile-menu"
-    class="hidden md:hidden absolute left-0 w-full border-b border-border bg-canvas shadow-2xl animate-in slide-in-from-top-2 duration-200"
-  >
-    <nav class="flex flex-col p-4 gap-2">
+<!-- Mobile Menu Overlay -->
+<!-- Simplified logic: standard flex/hidden or transform classes managed by JS directly -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 top-20 z-40 bg-background/95 backdrop-blur-2xl border-t border-border/50 transform transition-transform duration-300 ease-in-out translate-x-full md:hidden flex flex-col"
+>
+  <div class="flex-1 overflow-y-auto p-6">
+    <nav class="flex flex-col gap-2">
       {
-        navItems.map((item) => (
+        navItems.map((item, index) => (
           <a
             href={item.href}
-            class="group flex items-center justify-between p-4 rounded-xl text-base font-medium text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+            class="group flex items-center justify-between p-4 rounded-2xl text-lg font-medium text-muted-foreground hover:bg-muted/50 hover:text-foreground transition-all duration-300"
           >
-            <div class="flex items-center gap-3">
-              <item.icon
-                size={18}
-                className="text-muted-foreground group-hover:text-primary transition-colors"
-              />
+            <div class="flex items-center gap-4">
+              <div class="p-2.5 rounded-xl bg-background border border-border/50 group-hover:border-primary/30 group-hover:bg-primary/10 transition-colors">
+                 <item.icon
+                  size={20}
+                  className="text-muted-foreground group-hover:text-primary transition-colors"
+                />
+              </div>
               {item.name}
             </div>
             <ChevronRight
-              size={16}
-              className="opacity-50 group-hover:text-primary transition-colors"
+              size={18}
+              className="opacity-20 group-hover:opacity-100 group-hover:text-primary transition-all group-hover:translate-x-1"
             />
           </a>
         ))
       }
-      <a
-        href="/chat"
-        class="flex items-center justify-between p-4 rounded-xl text-base font-medium bg-primary/10 text-primary border border-primary/20 mt-2"
-      >
-        <div class="flex items-center gap-3">
-          <MessageSquare size={18} className="text-primary" />
-          Probar Demo
-        </div>
-      </a>
     </nav>
   </div>
-</header>
+  
+  <div class="p-6 border-t border-border/50 bg-muted/20 pb-10">
+    <a
+      href="/chat"
+      class="flex items-center justify-center p-4 rounded-2xl text-lg font-bold bg-gradient-to-r from-primary to-violet-600 text-primary-foreground shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-300 w-full"
+    >
+      <div class="flex items-center gap-3">
+        <MessageSquare size={20} />
+        Probar Demo
+      </div>
+    </a>
+  </div>
+</div>
 
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const menuToggle = document.getElementById("menu-toggle");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const iconOpen = document.getElementById("icon-menu-open");
-    const iconClose = document.getElementById("icon-menu-close");
-    const header = document.getElementById("main-header");
+<script is:inline>
+  (function() {
+    function initHeader() {
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const iconOpen = document.getElementById("icon-menu-open");
+      const iconClose = document.getElementById("icon-menu-close");
+      const header = document.getElementById("main-header");
 
-    // Scroll effect
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 20) {
-        header?.classList.add("bg-canvas/80");
-        header?.classList.remove("bg-canvas/20");
-      } else {
-        header?.classList.remove("bg-canvas/80");
-        header?.classList.add("bg-canvas/20");
+      // Estado inicial limpio
+      if (mobileMenu) {
+        mobileMenu.classList.add("translate-x-full");
+        mobileMenu.classList.remove("translate-x-0");
+        document.body.style.overflow = '';
       }
-    });
-
-    if (!menuToggle || !mobileMenu || !iconOpen || !iconClose) return;
-
-    // Función para cerrar el menú
-    const closeMenu = () => {
-      mobileMenu.classList.add("hidden");
-      iconOpen.classList.remove("hidden");
-      iconClose.classList.add("hidden");
-    };
-
-    // Toggle del menú
-    menuToggle.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const isHidden = mobileMenu.classList.contains("hidden");
-
-      if (isHidden) {
-        mobileMenu.classList.remove("hidden");
-        iconOpen.classList.add("hidden");
-        iconClose.classList.remove("hidden");
-      } else {
-        closeMenu();
+      if (iconOpen && iconClose) {
+        iconOpen.classList.remove("hidden");
+        iconClose.classList.add("hidden");
       }
-    });
 
-    // Cerrar al hacer click en enlaces
-    const navLinks = mobileMenu.querySelectorAll("a");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        closeMenu();
+      // Scroll effect
+      const updateHeader = () => {
+        if (!header) return;
+        if (window.scrollY > 20) {
+          header.classList.add("shadow-sm", "border-border/40");
+          header.classList.remove("border-transparent");
+        } else {
+          header.classList.remove("shadow-sm", "border-border/40");
+          header.classList.add("border-transparent");
+        }
+      };
+      
+      window.removeEventListener("scroll", updateHeader);
+      window.addEventListener("scroll", updateHeader, { passive: true });
+      updateHeader();
+
+      if (!menuToggle || !mobileMenu) return;
+
+      // Reemplazar el botón para limpiar eventos anteriores
+      const newMenuToggle = menuToggle.cloneNode(true);
+      menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
+      
+      // Lógica de toggle simplificada
+      newMenuToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        
+        const isClosed = mobileMenu.classList.contains("translate-x-full");
+        const iconOpen = newMenuToggle.querySelector("#icon-menu-open");
+        const iconClose = newMenuToggle.querySelector("#icon-menu-close");
+
+        if (isClosed) {
+          // ABRIR
+          mobileMenu.classList.remove("translate-x-full");
+          mobileMenu.classList.add("translate-x-0");
+          
+          if(iconOpen) iconOpen.classList.add("hidden");
+          if(iconClose) iconClose.classList.remove("hidden");
+          
+          document.body.style.overflow = 'hidden';
+        } else {
+          // CERRAR
+          mobileMenu.classList.add("translate-x-full");
+          mobileMenu.classList.remove("translate-x-0");
+          
+          if(iconOpen) iconOpen.classList.remove("hidden");
+          if(iconClose) iconClose.classList.add("hidden");
+          
+          document.body.style.overflow = '';
+        }
       });
-    });
 
-    // Cerrar al hacer click fuera
-    document.addEventListener("click", (e) => {
-      const target = e.target as HTMLElement;
-      if (
-        !mobileMenu.contains(target) &&
-        !menuToggle.contains(target) &&
-        !mobileMenu.classList.contains("hidden")
-      ) {
-        closeMenu();
-      }
-    });
-  });
+      // Cerrar al click en links
+      const navLinks = mobileMenu.querySelectorAll("a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("translate-x-full");
+          mobileMenu.classList.remove("translate-x-0");
+          
+          const iconOpen = document.getElementById("icon-menu-open");
+          const iconClose = document.getElementById("icon-menu-close");
+          if(iconOpen) iconOpen.classList.remove("hidden");
+          if(iconClose) iconClose.classList.add("hidden");
+          
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    initHeader();
+    document.addEventListener("astro:page-load", initHeader);
+  })();
 </script>
