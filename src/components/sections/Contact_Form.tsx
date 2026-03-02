@@ -18,7 +18,9 @@ export function ContactForm() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('https://n8n-main-instance-production-96ac.up.railway.app/webhook/form', {
+      const apiURL = import.meta.env.PUBLIC_WEBHOOK_URL
+      
+      const response = await fetch(apiURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
