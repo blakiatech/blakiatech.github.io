@@ -1,0 +1,23 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  className?: string;
+  size?: number;
+}
+
+const { className, size = 24 } = Astro.props;
+---
+
+<div
+  class={cn(
+    "absolute inset-0 pointer-events-none",
+    "bg-[linear-gradient(to_right,var(--color-grid)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-grid)_1px,transparent_1px)]",
+    "[mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]",
+    className,
+  )}
+  style={{
+    backgroundSize: `${size}px ${size}px`,
+  }}
+>
+</div>

@@ -1,0 +1,227 @@
+---
+import { NAV_LINKS } from "@/data/links"
+import { ModeToggle } from "@/components/shared/ModeToggle";
+import { ChevronRight, Menu, MessageSquare, X } from "lucide-react";
+---
+
+<header
+  id="main-header"
+  class="fixed top-0 z-50 w-full bg-white dark:bg-blakia-dark shadow-lg"
+>
+  <div
+    class="container relative flex h-18 items-center justify-between px-6 mx-auto"
+  >
+    <!-- Left: Logo -->
+    <div class="flex items-center gap-2 relative z-50">
+      <a
+        href="/"
+        class="flex items-center space-x-2 hover:opacity-80 transition-opacity group"
+      >
+        <img
+          src="/LOGO_BLAKIA_BEIGE_CLARO-12.svg"
+          alt="BlakIA Logo"
+          class="h-6 w-auto object-contain rounded-sm dark:hidden"
+        />
+        <img
+          src="/LOGO_BLAKIA_BEIGE_OSCURO-12.svg"
+          alt="BlakIA Logo"
+          class="h-6 w-auto object-contain rounded-sm hidden dark:block"
+        />
+      </a>
+    </div>
+
+    <!-- Center: Desktop Nav (Floating Capsule) -->
+    <nav class="hidden md:flex items-stretch h-full">
+      {
+        NAV_LINKS.map((item) => (
+          <a
+            href={item.href}
+            class="group relative px-6 flex items-center h-full font-montserrat font-medium text-lg text-blakia-brown 
+              hover:bg-gradient-to-t hover:from-blakia-brown hover:to-white hover:text-white
+              
+              after:content-[''] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 
+              after:w-[1px] after:h-6 after:bg-blakia-brown/20
+              last:after:hidden hover:after:opacity-0"
+          >
+            <span class="flex flex-col items-center">
+              <span class="block font-semibold invisible h-0 overflow-hidden select-none" aria-hidden="true">
+                {item.name}
+              </span>
+              <span class="group-hover:font-semibold">
+                {item.name}
+              </span>
+            </span>
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Right: Actions -->
+    <div class="flex items-center gap-3 relative z-50">
+      <!-- Toggle -->
+      <ModeToggle client:load />
+
+      <!-- Demo Button (Desktop) -->
+      <a
+        href="/demo"
+        class="hidden md:inline-flex items-center justify-center font-semibold text-sm text-white bg-blakia-brown
+          rounded-lg px-4 py-1 shadow-lg"
+      >
+        <span>Demo</span>
+      </a>
+
+      <!-- Mobile Hamburger -->
+      <button
+        class="md:hidden p-2.5 rounded-full text-foreground hover:bg-muted transition-colors border border-transparent hover:border-border relative z-50"
+        id="menu-toggle"
+        aria-label="Abrir menú"
+      >
+        <div id="icon-menu-open" class="transition-transform duration-300">
+          <Menu size={22} />
+        </div>
+        <div id="icon-menu-close" class="hidden transition-transform duration-300 rotate-90">
+          <X size={22} />
+        </div>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<!-- Simplified logic: standard flex/hidden or transform classes managed by JS directly -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 top-20 z-40 bg-blakia-bone/95 dark:bg-blakia-dark/95 backdrop-blur-2xl border-t border-blakia-brown/20 transform transition-transform duration-300 ease-in-out translate-x-full md:hidden flex flex-col"
+>
+    <div class="flex-1 overflow-y-auto p-6">
+    <nav class="flex flex-col gap-2">
+      {
+        NAV_LINKS.map((item) => (
+          <a
+            href={item.href}
+            class="group flex items-center justify-between p-4 rounded-2xl text-lg font-medium text-blakia-brown/70 hover:bg-blakia-brown/10 hover:text-blakia-brown transition-all duration-300"
+          >
+            <div class="flex items-center gap-4">
+              <div class="p-2.5 rounded-xl bg-white border border-blakia-brown/20 group-hover:border-blakia-brown/30 group-hover:bg-blakia-brown/10 transition-colors">
+                 <item.icon
+                  size={20}
+                  className="text-blakia-brown/70 group-hover:text-blakia-brown transition-colors"
+                />
+              </div>
+              {item.name}
+            </div>
+            <ChevronRight
+              size={18}
+              className="opacity-20 group-hover:opacity-100 group-hover:text-blakia-brown transition-all group-hover:translate-x-1"
+            />
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+  
+  <div class="p-6 border-t border-blakia-brown/20 bg-blakia-brown/5 pb-10">
+    <a
+      href="/chat"
+      class="flex items-center justify-center p-4 rounded-2xl text-lg font-bold bg-blakia-brown text-white hover:opacity-90 transition-all duration-300 w-full"
+    >
+      <div class="flex items-center gap-3">
+        <MessageSquare size={20} />
+        Probar Demo
+      </div>
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    function initHeader() {
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const iconOpen = document.getElementById("icon-menu-open");
+      const iconClose = document.getElementById("icon-menu-close");
+      const header = document.getElementById("main-header");
+
+      // Estado inicial limpio
+      if (mobileMenu) {
+        mobileMenu.classList.add("translate-x-full");
+        mobileMenu.classList.remove("translate-x-0");
+        document.body.style.overflow = '';
+      }
+      if (iconOpen && iconClose) {
+        iconOpen.classList.remove("hidden");
+        iconClose.classList.add("hidden");
+      }
+
+      // Scroll effect
+      const updateHeader = () => {
+        if (!header) return;
+        if (window.scrollY > 20) {
+          header.classList.add("shadow-sm", "border-border/40");
+          header.classList.remove("border-transparent");
+        } else {
+          header.classList.remove("shadow-sm", "border-border/40");
+          header.classList.add("border-transparent");
+        }
+      };
+      
+      window.removeEventListener("scroll", updateHeader);
+      window.addEventListener("scroll", updateHeader, { passive: true });
+      updateHeader();
+
+      if (!menuToggle || !mobileMenu) return;
+
+      // Reemplazar el botón para limpiar eventos anteriores
+      const newMenuToggle = menuToggle.cloneNode(true);
+      menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
+      
+      // Lógica de toggle simplificada
+      newMenuToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        
+        const isClosed = mobileMenu.classList.contains("translate-x-full");
+        const iconOpen = newMenuToggle.querySelector("#icon-menu-open");
+        const iconClose = newMenuToggle.querySelector("#icon-menu-close");
+
+        if (isClosed) {
+          // ABRIR
+          mobileMenu.classList.remove("translate-x-full");
+          mobileMenu.classList.add("translate-x-0");
+          
+          if(iconOpen) iconOpen.classList.add("hidden");
+          if(iconClose) iconClose.classList.remove("hidden");
+          
+          document.body.style.overflow = 'hidden';
+        } else {
+          // CERRAR
+          mobileMenu.classList.add("translate-x-full");
+          mobileMenu.classList.remove("translate-x-0");
+          
+          if(iconOpen) iconOpen.classList.remove("hidden");
+          if(iconClose) iconClose.classList.add("hidden");
+          
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Cerrar al click en links
+      const navLinks = mobileMenu.querySelectorAll("a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("translate-x-full");
+          mobileMenu.classList.remove("translate-x-0");
+          
+          const iconOpen = document.getElementById("icon-menu-open");
+          const iconClose = document.getElementById("icon-menu-close");
+          if(iconOpen) iconOpen.classList.remove("hidden");
+          if(iconClose) iconClose.classList.add("hidden");
+          
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    initHeader();
+    document.addEventListener("astro:page-load", initHeader);
+  })();
+</script>

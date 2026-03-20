@@ -1,143 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import "tailwindcss";
 @variant dark (&:where(.dark, .dark *));
 
 @plugin "tailwindcss-animate";
 @plugin "@tailwindcss/typography";
 
+
+/* IMPORTACIÓN DE FUENTES */
+/* Hastegi */
+@font-face {
+  font-family: 'Hastegi';
+  src: url('/fonts/Hastegi.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The Darling */
+@font-face {
+  font-family: 'The Darling';
+  src: url('/fonts/TheDarling.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Handwriting */
+@font-face {
+  font-family: 'handwriting-black-draft';
+  src: url('/fonts/handwriting-black-draft_DEMO.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  /* Semantic Tokens based on new palette */
-  --background: hsl(0 0% 98%); /* #FAFAFA */
-  --foreground: hsl(240 10% 3.9%); /* #09090b */
+  /* PALETA OFICIAL BLAKIA [cite: 1, 5] */
+  --blakia-brown: hsl(11, 29%, 29%);
+  /* RGB(96, 61, 53) - Principal [cite: 80, 96] */
+  --blakia-bone: hsl(45, 47%, 93%);
+  /* RGB(246, 242, 230) - Papel Rajado [cite: 126] */
+  --blakia-dark: hsl(60, 4%, 11%);
+  /* RGB(29, 29, 27) - Texto/Nombres [cite: 210, 237] */
+  --blakia-white: hsl(0, 0%, 100%);
+  /* RGB(255, 255, 255) [cite: 78, 106] */
+  --blakia-gray-bg: hsl(240, 14%, 98%);
+  /* RGB(249, 249, 250) - Fondo Menú  */
+  --blakia-gold: hsl(38, 31%, 63%);
+  /* RGB(187, 166, 134) - Fondo Menú Móvil [cite: 29] */
+  --blakia-teal: hsl(189, 100%, 35%);
+  /* RGB(0, 151, 178) - Botón App  */
+  --blakia-placeholder: hsl(0, 0%, 78%);
+  /* RGB(198, 198, 197) [cite: 269] */
 
-  --card: hsl(0 0% 100%); /* #FFFFFF */
-  --card-foreground: hsl(240 10% 3.9%);
-
-  --popover: hsl(0 0% 100%); /* #FFFFFF */
-  --popover-foreground: hsl(240 10% 3.9%);
-
-  --primary: hsl(261 85% 51%); /* #5E17EB */
-  --primary-foreground: hsl(0 0% 98%);
-
-  --secondary: hsl(64 100% 51%); /* #EEFF06 */
-  --secondary-foreground: hsl(240 10% 3.9%);
-
-  --muted: hsl(240 4.8% 95.9%);
-  --muted-foreground: hsl(240 3.8% 46.1%);
-
-  --accent: hsl(64 100% 51%); /* #EEFF06 */
-  --accent-foreground: hsl(240 10% 3.9%);
-
-  --destructive: hsl(0 84.2% 60.2%);
-  --destructive-foreground: hsl(0 0% 98%);
-
-  --border: hsl(240 5.9% 90%);
-  --input: hsl(240 5.9% 90%);
-  --ring: hsl(261 85% 51%); /* Purple */
+  /* SEMANTIC TOKENS */
+  --background: var(--blakia-bone);
+  --foreground: var(--blakia-brown);
+  --primary: var(--blakia-brown);
+  --primary-foreground: var(--blakia-white);
+  --secondary: var(--blakia-gold);
+  --border: hsla(11, 29%, 29%, 0.2);
 
   --radius: 0.5rem;
-
-  --chart-1: hsl(261 85% 51%);
-  --chart-2: hsl(64 100% 51%);
-  --chart-3: hsl(197 37% 24%);
-  --chart-4: hsl(43 74% 66%);
-  --chart-5: hsl(27 87% 67%);
-
-  /* Custom Tokens */
-  --shadow-glow-purple: 0 0 20px rgba(94, 23, 235, 0.3);
-  --grid-pattern: #80808012;
-
-  /* Semantic Aliases */
-  --canvas: var(--background);
-  --surface: var(--card);
 }
 
 .dark {
-  --background: hsl(240 10% 3.9%);
-  --foreground: hsl(0 0% 98%);
-  --card: hsl(240 10% 3.9%);
-  --card-foreground: hsl(0 0% 98%);
-  --popover: hsl(240 10% 3.9%);
-  --popover-foreground: hsl(0 0% 98%);
-  --primary: hsl(261 85% 51%);
-  --primary-foreground: hsl(0 0% 98%);
-  --secondary: hsl(64 100% 51%);
-  --secondary-foreground: hsl(240 10% 3.9%);
-  --muted: hsl(240 3.7% 15.9%);
-  --muted-foreground: hsl(240 5% 64.9%);
-  --accent: hsl(240 3.7% 15.9%);
-  --accent-foreground: hsl(0 0% 98%);
-  --destructive: hsl(0 62.8% 30.6%);
-  --destructive-foreground: hsl(0 0% 98%);
-  --border: hsl(240 3.7% 15.9%);
-  --input: hsl(240 3.7% 15.9%);
-  --ring: hsl(240 4.9% 83.9%);
+  --background: var(--blakia-dark);
+  --foreground: var(--blakia-bone);
+  --primary: var(--blakia-gold);
+  --primary-foreground: var(--blakia-dark);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+  /* COLORES PERSONALIZADOS */
+  --color-blakia-brown: var(--blakia-brown);
+  --color-blakia-white: var(--blakia-white);
+  --color-blakia-bone: var(--blakia-bone);
+  --color-blakia-dark: var(--blakia-dark);
+  --color-blakia-teal: var(--blakia-teal);
+  --color-blakia-placeholder: var(--blakia-placeholder);
 
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  /* TIPOGRAFÍAS DEL DISEÑO */
+  --font-montserrat: 'Montserrat';
+  --font-hastegi: 'Hastegi', sans-serif;
+  --font-darling: 'The Darling', cursive;
+  --font-handwriting: 'handwriting-black-draft';
+  --font-happy: 'Happy Time', serif;
 
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
-  --font-sans: Inter, sans-serif;
-
-  --shadow-glow: var(--shadow-glow-purple);
-  --color-grid: var(--grid-pattern);
-
-  --color-canvas: var(--canvas);
-  --color-surface: var(--surface);
+  /* SHADOWS ESPECÍFICAS  */
+  --shadow-blakia-btn: 0 4px 10px rgba(0, 0, 0, 0.35);
+  /* Botón "Empieza ahora" [cite: 119] */
+  --shadow-paper: 0 4px 8px rgba(0, 0, 0, 0.75);
+  /* Efecto papel rajado [cite: 130] */
 }
 
-@utility title-outline-purple {
-  -webkit-text-stroke: 1px var(--primary);
-  color: transparent;
-  background-clip: text;
-  background-image: linear-gradient(to right, var(--primary), #8b5cf6);
-}
-
-@utility container {
-  margin-inline: auto;
-  padding-inline: 1rem;
-
-  @media (width >= 1200px) {
-    max-width: 1200px;
+/* Animación HERO, efecto fade-up */
+@theme {
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
-* {
-  border-color: var(--border);
+.animate-fade-up {
+  animation: fade-up 1s ease-out forwards;
 }
 
+
+
+/* ESTILOS BASE */
 body {
   background-color: var(--background);
   color: var(--foreground);
-}
-
-html {
-  scroll-behavior: smooth;
+  font-family: var(--font-montserrat);
 }

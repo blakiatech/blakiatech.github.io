@@ -1,7 +1,7 @@
 ---
 import "@/styles/global.css";
 import ClientRouter from "astro/components/ClientRouter.astro";
-import Chatbot from "@/components/shared/Chatbot.astro";
+import Chatbot from "@/components/layout/Chatbot.astro";
 
 interface Props {
   title?: string;
@@ -50,13 +50,9 @@ const base = import.meta.env.BASE_URL;
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href={"/favicon.ico"} />
 
-    <!-- Fonts -->
+    <!-- Fonts (Montserrat loaded in global.css) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TJV9Q93EP"
@@ -99,17 +95,17 @@ const base = import.meta.env.BASE_URL;
     </script>
   </head>
   <body
-    class="min-h-screen bg-canvas font-sans antialiased text-foreground relative selection:bg-primary/30"
+    class="min-h-screen bg-bone dark:bg-dark font-montserrat antialiased text-blakia-brown dark:text-blakia-bone relative selection:bg-blakia-brown/30"
   >
     {/* Global Background Effects */}
     <div class="fixed inset-0 z-[-1] w-full h-full pointer-events-none">
       {/* Ambient Glows */}
       <div
-        class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/10 blur-[120px] animate-pulse-slow"
+        class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-blakia-brown/10 blur-[120px] animate-pulse-slow"
       >
       </div>
       <div
-        class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[120px] animate-pulse-slow"
+        class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blakia-gold/10 blur-[120px] animate-pulse-slow"
         style="animation-delay: 2s;"
       >
       </div>
