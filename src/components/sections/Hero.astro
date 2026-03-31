@@ -7,86 +7,140 @@ import { Sparkles } from "lucide-react";
   class="relative min-h-screen flex items-center justify-center overflow-hidden"
 >
   <img
-    src="/img/FONDO_PRINCIPAL_HERO.jpg"
+    src="/img/claro/FONDO_HERO.jpg"
     alt="Fondo Blakia"
-    class="absolute inset-0 h-full w-full object-cover z-0"
+    class="absolute inset-0 h-full w-full object-cover z-0 dark:hidden"
+  />
+  <img
+    src="/img/oscuro/FONDO_HERO_oscuro.jpg"
+    alt="Fondo Blakia"
+    class="absolute inset-0 h-full w-full object-cover z-0 hidden dark:block"
   />
 
-  <div class="absolute bottom-20 left-0 z-10 animate-fade-up">
-    <div class="w-125">
-      <img 
-        src="/img/asiento_hombre.png" 
-        class="w-full h-full object-cover" 
-        alt="Asiento hombre"
-      />
+  {/* IMÁGENES LATERALES */}
+  <div class="absolute inset-0 z-10 pointer-events-none hidden md:block">
+    {/* IZQUIERDA: Asiento + Hombre */}
+    <div class="absolute bottom-[10%] left-0 flex items-end animate-fade-up">
+      <div class="relative md:w-60 lg:w-80 xl:w-110">
+        <img 
+          src="/img/claro/asiento_hombre.png" 
+          class="w-full h-auto object-contain object-bottom dark:hidden" 
+          alt="Asiento hombre"
+        />
+        <img 
+          src="/img/oscuro/asiento_hombre_oscuro.png" 
+          class="w-full h-auto object-contain object-bottom hidden dark:block" 
+          alt="Asiento hombre"
+        />
+      </div>
+      <div class="absolute bottom-0 left-0 md:w-60 lg:w-80 xl:w-110">
+        <img 
+          src="/img/claro/hombre.png"  
+          class="w-full h-auto object-contain object-bottom dark:hidden" 
+          alt="Hombre Izquierda"
+        />
+        <img 
+          src="/img/oscuro/hombre_oscuro.png"  
+          class="w-full h-auto object-contain object-bottom hidden dark:block" 
+          alt="Hombre Izquierda"
+        />
+      </div>
+    </div>
+
+    {/* DERECHA: Dios moderno */}
+    <div class="absolute bottom-[10%] right-0 flex items-end animate-fade-up">
+      <div class="md:w-60 lg:w-80 xl:w-110">
+        <img 
+          src="/img/claro/dios_moderno.png" 
+          class="w-full h-auto object-contain object-bottom dark:hidden" 
+          alt="Dios moderno Derecha"
+        />
+        <img 
+          src="/img/oscuro/dios_moderno_oscuro.png" 
+          class="w-full h-auto object-contain object-bottom hidden dark:block" 
+          alt="Dios moderno Derecha"
+        />
+      </div>
     </div>
   </div>
 
-  <div class="absolute bottom-20 left-0 z-20 animate-fade-up">
-    <div class="w-125">
+
+  {/* IMÁGENES LATERALES - MOBILE */}
+  <div class="absolute inset-0 z-10 pointer-events-none block md:hidden animate-fade-up">
+    <div class="absolute bottom-[31%] left-0 w-32 sm:w-40 md:w-52 lg:w-70 xl:w-100">
       <img 
-        src="/img/hombre.png" 
-        class="w-full h-full object-cover" 
+        src="/img/claro/mano_hombre.png" 
+        class="w-full h-auto object-contain object-bottom dark:hidden" 
+        alt="Asiento hombre"
+      />
+      <img 
+        src="/img/oscuro/mano_hombre_oscuro.png" 
+        class="w-full h-auto object-contain object-bottom hidden dark:block" 
+        alt="Asiento hombre"
+      />
+    </div>
+    <div class="absolute bottom-[28%] right-0 w-32 sm:w-40 md:w-52 lg:w-70 xl:w-100">
+      <img 
+        src="/img/claro/mano_dios_moderno.png"  
+        class="w-full h-auto object-contain object-bottom dark:hidden" 
+        alt="Hombre Izquierda"
+      />
+      <img 
+        src="/img/oscuro/mano_dios_moderno_oscuro.png"  
+        class="w-full h-auto object-contain object-bottom hidden dark:block" 
         alt="Hombre Izquierda"
       />
     </div>
   </div>
 
-  <div class="absolute bottom-20 right-0 z-20 animate-fade-up">
-    <div class="h-125">
-      <img 
-        src="/img/dios_moderno.png" 
-        class="w-full h-full object-cover" 
-        alt="Dios moderno Derecha"
-      />
-    </div>
-  </div>
+  <img
+    src="/img/claro/papel_rajado.svg"
+    alt="Fondo Blakia"
+    class="absolute bottom-0 h-30 w-full object-cover object-top z-20 dark:hidden"
+  />
+  <img
+    src="/img/oscuro/papel_rajado_oscuro.svg"
+    alt="Fondo Blakia"
+    class="absolute bottom-0 h-30 w-full object-cover object-top z-20 hidden dark:block"
+  />
 
-  <!-- <div class="absolute bottom-0 left-0 w-full z-30 flex flex-col pointer-events-none">
-    <img 
-      src="/img/papel_rajado.svg" 
-      class="w-full h-auto rotate-180 translate-y-[2px]" 
-      alt=""
-    />
-    <div class="h-10 w-full bg-blakia-cream"></div>
-  </div> -->
 
   <div
-    class="container relative z-40 flex flex-col items-center text-center max-w-4xl px-4 pt-12"
+    class="container relative z-30 flex flex-col items-center text-center max-w-xl md:max-w-xl xl:max-w-3xl px-4"
   >
-    {/* Badge with Gold Accent - Consistent with other sections */}
     <div
-      class="inline-flex items-center gap-2 rounded-full border border-blakia-brown bg-white px-6 py-1 mb-8"
+      class="inline-flex items-center gap-2 rounded-full border border-blakia-brown bg-white dark:text-blakia-brown px-4 md:px-6 py-1 mb-16 md:mb-18 text-xs md:text-sm"
     >
       <Sparkles
-        className="size-5 group-hover:rotate-12 transition-transform text-blakia-brown"
+        className="size-4 md:size-5 group-hover:rotate-12 transition-transform"
       />
-      <span
-        >Consultora tecnológica especializada en Inteligencia Artificial</span
-      >
+      <span>Consultora tecnológica especializada en Inteligencia Artificial</span>
     </div>
 
-    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-handwriting mb-8">
+    <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-handwriting mb-8 md:mb-16 dark:text-blakia-bone-dark">
       El <span class="text-white">renacer</span> de tu empresa
     </h1>
 
-    <p class="max-w-2xl mb-8 text-2xl font-hastegi">
+    <p class="max-w-sm md:max-w-md lg:max-w-xl xl:max-w-2xl mb-6 md:mb-8 text-xl md:text-2xl font-hastegi font-bold md:font-semibold">
       Transformamos tareas manuales en sistemas autónomos eficientes. 
       Recupera tu tiempo y escala tu empresa con tecnología de vanguardia.
     </p>
 
-    <div class="flex items-center">
-      <button class="relative z-20 h-12 px-8 bg-blakia-brown text-white font-hastegi text-2xl
+    <div class="flex flex-col md:flex-row items-center pt-20 md:pt-0">
+      <button class="relative z-20 h-12 px-10 md:px-8 bg-blakia-brown text-white dark:bg-blakia-bone-dark dark:text-blakia-brown font-hastegi text-lg md:text-2xl
         rounded-full shadow-blakia-btn 
         hover:scale-105 transition-transform duration-300">
         Empieza ahora
       </button>
 
-      <button class="relative flex items-center gap-2 z-10 h-12 pl-12 pr-8 -ml-8 bg-white text-gray-500 font-hastegi text-2xl 
-        rounded-r-full border border-blakia-brown font-bold
-        hover:bg-gray-200 transition-colors duration-300">
+      <button class="relative flex items-center gap-1 z-10 h-12 font-hastegi font-bold
+        px-8 pt-4 -mt-4 bg-white text-gray-500 text-lg  
+
+        md:pl-12 md:pr-8 md:pt-0 md:mt-0 md:-ml-8 md:text-2xl
+        rounded-full border border-blakia-brown  hover:bg-gray-200 transition-colors duration-300">
+        
         <Sparkles
-          className="size-3.5 group-hover:rotate-12 transition-transform text-gray-500"
+          className="size-3 md:size-3.5 group-hover:rotate-12 transition-transform text-gray-500"
         />
         Ver soluciones
       </button>

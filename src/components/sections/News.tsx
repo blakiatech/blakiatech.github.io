@@ -11,17 +11,17 @@ export default function News() {
   return (
     <section
       id="news"
-      className="container mx-auto min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center gap-10"
+      className="container mx-auto min-h-screen grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:gap-10 px-4"
     >
       {/* IZQUIERDA: TEXTO */}
-      <div className="flex flex-col gap-3">
-        <h2 className="font-hastegi text-6xl">
-          <span className="font-darling text-7xl">N</span>uevas fronteras
+      <div className="flex flex-col gap-1 text-center md:text-start">
+        <h2 className="font-hastegi text-4xl md:text-5xl lg:text-6xl dark:text-blakia-bone-dark">
+          <span className="font-darling text-5xl md:text-6xl lg:text-7xl dark:text-white">N</span>uevas fronteras
         </h2>
 
-        <p className="font-semibold text-xl pt-2">Noticias importantes</p>
+        <p className="font-semibold text-base md:text-xl pt-4">Noticias importantes</p>
 
-        <p className="font-hastegi text-5xl">
+        <p className="font-hastegi text-2xl md:text-3xl lg:text-5xl leading-tight dark:text-blakia-bone-dark">
           Nuestra tecnología y visión analizada por los referentes de la industria
         </p>
       </div>
@@ -53,7 +53,7 @@ export default function News() {
             <motion.div
               key={selectedId}
               layoutId={selectedId}
-              className="z-10 w-full max-w-[340px] bg-white rounded-2xl shadow-2xl overflow-hidden"
+              className="z-10 w-full max-w-[240px] sm:max-w-[340px] bg-white dark:bg-blakia-dark rounded-2xl shadow-2xl overflow-hidden"
             >
               {/* Espacio superior (Imagen o Placeholder) */}
               <div className="w-full" >
@@ -61,31 +61,31 @@ export default function News() {
               </div>
 
               {/* Franja Marrón Central */}
-              <div className="flex items-center bg-blakia-brown p-5 gap-4">
-                <div className="flex items-center justify-center bg-white rounded-full p-1">
-                  {/* Aquí iría el logo de la empresa de la noticia */}
-                  <span className="font-bold text-xl">{selectedNews.logo}</span>
-                </div>
-                <div className="text-white">
-                  <h3 className="text-sm uppercase leading-tight">
-                    {selectedNews.title}
-                  </h3>
-                  <p className="text-[9px] opacity-80 tracking-widest mt-1.5 font-semibold">
+              <div className="flex flex-col items-center bg-blakia-brown dark:bg-white p-5 gap-4">
+                <h3 className="text-sm uppercase leading-tight text-white dark:text-blakia-brown">
+                  {selectedNews.title}
+                </h3>
+                <div className="flex flex-row items-center justify-start w-full gap-2">
+                  <div className="flex items-center justify-center bg-white dark:bg-blakia-dark rounded-full p-1">
+                    {/* Aquí iría el logo de la empresa de la noticia */}
+                    <span className="font-bold text-xl">{selectedNews.logo}</span>
+                  </div>
+                  <p className="text-[9px] opacity-80 tracking-widest font-semibold text-white dark:text-blakia-brown">
                     COBERTURA INTERNACIONAL
                   </p>
                 </div>
               </div>
 
               {/* Cuerpo de la noticia */}
-              <div className="p-6">
-                <p className="font-hastegi text-justify text-xl">
+              <div className="p-4">
+                <p className="font-hastegi text-justify text-xl leading-tight tracking-tight">
                   "{selectedNews.summary}"
                 </p>
               </div>
 
               {/* Pie de tarjeta - Ver noticia */}
-              <div className="flex flex-col justify-center py-2 px-5 text-right bg-blakia-brown">
-                <a href={selectedNews.url} target="blank" className="text-white text-xl font-semibold font-hastegi hover:underline">
+              <div className="flex flex-col justify-center py-2 px-5 text-right bg-blakia-brown dark:bg-white">
+                <a href={selectedNews.url} target="blank" className="text-white dark:text-blakia-brown text-xl font-semibold font-hastegi hover:underline">
                   - Ver noticia
                 </a>
               </div>

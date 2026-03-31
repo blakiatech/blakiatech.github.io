@@ -16,7 +16,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 /* The Darling */
 @font-face {
   font-family: 'The Darling';
@@ -25,7 +24,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 /* Handwriting */
 @font-face {
   font-family: 'handwriting-black-draft';
@@ -35,41 +33,67 @@
   font-display: swap;
 }
 
+
+
 :root {
-  /* PALETA OFICIAL BLAKIA [cite: 1, 5] */
+  /* PALETA OFICIAL BLAKIA */
   --blakia-brown: hsl(11, 29%, 29%);
-  /* RGB(96, 61, 53) - Principal [cite: 80, 96] */
+  /* RGB(96, 61, 53) - Principal */
   --blakia-bone: hsl(45, 47%, 93%);
-  /* RGB(246, 242, 230) - Papel Rajado [cite: 126] */
+  /* RGB(246, 242, 230) - Papel Rajado */
   --blakia-dark: hsl(60, 4%, 11%);
-  /* RGB(29, 29, 27) - Texto/Nombres [cite: 210, 237] */
+  /* RGB(29, 29, 27) - Texto/Nombres */
   --blakia-white: hsl(0, 0%, 100%);
-  /* RGB(255, 255, 255) [cite: 78, 106] */
+  /* RGB(255, 255, 255) */
   --blakia-gray-bg: hsl(240, 14%, 98%);
   /* RGB(249, 249, 250) - Fondo Menú  */
   --blakia-gold: hsl(38, 31%, 63%);
-  /* RGB(187, 166, 134) - Fondo Menú Móvil [cite: 29] */
+  /* RGB(187, 166, 134) - Fondo Menú Móvil */
   --blakia-teal: hsl(189, 100%, 35%);
-  /* RGB(0, 151, 178) - Botón App  */
+  /* RGB(0, 151, 178) - Botón App */
   --blakia-placeholder: hsl(0, 0%, 78%);
-  /* RGB(198, 198, 197) [cite: 269] */
+  /* RGB(198, 198, 197) */
+  
+  /* PALETA DARK */
+  --blakia-dark: hsl(60, 4%, 11%);
+  /* RGB(29, 29, 27) - FONDO */
+  --blakia-white: hsl(0, 0%, 100%);
+  /* RGB(255, 255, 255) Resaltado de algunas palabras/letras */
+  --blakia-bone-dark: hsl(35.51, 35%, 72%);
+  /* RGB(209, 189, 160) TEXTO/BOTONES */
+  --blakia-gold-dark: hsl(45, 47%, 93%);
+  /* RGB(246, 242, 230) */
+  --blakia-brown: hsl(11, 29%, 29%);
+  /* RGB(96, 61, 53) */
 
   /* SEMANTIC TOKENS */
   --background: var(--blakia-bone);
   --foreground: var(--blakia-brown);
-  --primary: var(--blakia-brown);
-  --primary-foreground: var(--blakia-white);
-  --secondary: var(--blakia-gold);
-  --border: hsla(11, 29%, 29%, 0.2);
 
-  --radius: 0.5rem;
+  /* COLORES DE BOTÓN - CLARO */
+  --btn-text: var(--blakia-white);
+  --btn-bg: var(--blakia-brown);
+
+  /* FONDO CLARO */
+  background-image: url('/img/claro/papel_rajado.svg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .dark {
   --background: var(--blakia-dark);
-  --foreground: var(--blakia-bone);
-  --primary: var(--blakia-gold);
-  --primary-foreground: var(--blakia-dark);
+  --foreground: var(--blakia-white);
+
+  /* COLORES DE BOTÓN - DARK */
+  --btn-text: var(--blakia-brown);
+  --btn-bg: var(--blakia-white);
+
+  /* FONDO OSCURO */
+  background-image: url('/img/oscuro/papel_rajado_oscuro.svg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 @theme inline {
@@ -77,9 +101,12 @@
   --color-blakia-brown: var(--blakia-brown);
   --color-blakia-white: var(--blakia-white);
   --color-blakia-bone: var(--blakia-bone);
+  --color-blakia-bone-dark: var(--blakia-bone-dark);
   --color-blakia-dark: var(--blakia-dark);
   --color-blakia-teal: var(--blakia-teal);
   --color-blakia-placeholder: var(--blakia-placeholder);
+  --color-btn-bg: var(--btn-bg);
+  --color-btn-text: var(--btn-text);
 
   /* TIPOGRAFÍAS DEL DISEÑO */
   --font-montserrat: 'Montserrat';
@@ -90,10 +117,12 @@
 
   /* SHADOWS ESPECÍFICAS  */
   --shadow-blakia-btn: 0 4px 10px rgba(0, 0, 0, 0.35);
-  /* Botón "Empieza ahora" [cite: 119] */
+  /* Botón "Empieza ahora" */
   --shadow-paper: 0 4px 8px rgba(0, 0, 0, 0.75);
-  /* Efecto papel rajado [cite: 130] */
+  /* Efecto papel rajado */
 }
+
+
 
 /* Animación HERO, efecto fade-up */
 @theme {
@@ -108,7 +137,6 @@
     }
   }
 }
-
 .animate-fade-up {
   animation: fade-up 1s ease-out forwards;
 }
@@ -120,4 +148,17 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-montserrat);
+  transition: background-color 0.5s ease, background-image 0.5s ease, color 0.5s ease;
+}
+
+.btn-principal {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-principal:hover {
+  opacity: 0.85;
+  transform: scale(1.01); 
 }

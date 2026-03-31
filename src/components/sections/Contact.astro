@@ -1,80 +1,83 @@
----
-
----
-
 <section
   id="contact"
   class="relative min-h-screen flex items-center overflow-hidden"
 >
   <img
-    src="/img/FONDO_CONTACTO.jpg"
+    src="/img/claro/FONDO_CONTACTO.jpg"
     alt="Fondo Contacto"
-    class="absolute inset-0 h-full w-full object-cover z-0"
+    class="absolute inset-0 h-full w-full object-cover z-0 dark:hidden"
+  />
+  <img
+    src="/img/oscuro/FONDO_CONTACTO_oscuro.jpg"
+    alt="Fondo Contacto"
+    class="absolute inset-0 h-full w-full object-cover z-0 hidden dark:block"
   />
 
-  <div
-    class="absolute bottom-0 left-0 w-full max-w-200 z-10 pointer-events-none"
-  >
-    <img
-      src="/img/JUSTICIA_BEIGE.png"
-      class="w-full h-auto object-contain object-bottom"
-      alt="Ilustración"
-    />
-  </div>
+  <img
+    src="/img/claro/papel_rajado.svg"
+    alt="Fondo Blakia"
+    class="absolute top-0 h-30 w-full object-cover object-bottom z-20 dark:hidden"
+  />
+  <img
+    src="/img/oscuro/papel_rajado_oscuro.svg"
+    alt="Fondo Blakia"
+    class="absolute top-0 h-30 w-full object-cover object-bottom z-20 hidden dark:block"
+  />
 
-  <div
-    class="container mx-auto px-6 relative z-20 grid grid-cols-1 lg:grid-cols-2 items-center gap-12"
-  >
-    <div class="hidden lg:block"></div>
-
+  <div class="container mx-auto px-4 md:px-6 pt-20 relative z-20 items-center">
     <div class="flex flex-col space-y-4 items-center">
       <div>
-        <h2 class="font-hastegi text-6xl text-white">
-          <span class="font-darling text-7xl text-blakia-brown">T</span
+        <h2 class="font-hastegi text-4xl sm:text-5xl md:text-6xl text-white dark:text-blakia-bone-dark">
+          <span
+            class="font-darling text-5xl sm:text-6xl md:text-7xl text-blakia-brown dark:text-white"
+            >T</span
           >ransforma tu negocio
         </h2>
       </div>
 
-      <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-xl">
+      <div class="bg-white dark:bg-blakia-dark p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-2xl">
         <div class="text-center mb-4">
-          <h3 class="font-hastegi text-6xl">
-            <span class="font-darling text-7xl">C</span>ontacto
+          <h3 class="font-hastegi text-4xl sm:text-5xl md:text-6xl dark:text-blakia-bone-dark">
+            <span class="font-darling text-5xl sm:text-6xl md:text-7xl dark:text-white">C</span
+            >ontacto
           </h3>
         </div>
 
-        <form class="flex flex-col justify-center gap-3">
+        <form class="flex flex-col justify-center gap-3 text-sm sm:text-base">
           <input
             type="text"
             placeholder="Indicanos tu nombre"
-            class="bg-transparent border-b border-blakia-brown/30 py-2 outline-none focus:border-blakia-brown"
+            class="bg-transparent border-b border-blakia-brown/30 dark:border-white/30 py-2 outline-none focus:border-blakia-brown dark:focus:border-white"
           />
           <input
             type="email"
             placeholder="Danos un correo electrónico"
-            class="bg-transparent border-b border-blakia-brown/30 py-2 outline-none focus:border-blakia-brown"
+            class="bg-transparent border-b border-blakia-brown/30 dark:border-white/30 py-2 outline-none focus:border-blakia-brown dark:focus:border-white"
           />
           <input
             type="tel"
             placeholder="Danos un teléfono"
-            class="bg-transparent border-b border-blakia-brown/30 py-2 outline-none focus:border-blakia-brown"
+            class="bg-transparent border-b border-blakia-brown/30 dark:border-white/30 py-2 outline-none focus:border-blakia-brown dark:focus:border-white"
           />
           <input
             type="text"
             placeholder="Empresa"
-            class="bg-transparent border-b border-blakia-brown/30 py-2 outline-none focus:border-blakia-brown"
+            class="bg-transparent border-b border-blakia-brown/30 dark:border-white/30 py-2 outline-none focus:border-blakia-brown dark:focus:border-white"
           />
 
           <div class="flex flex-col">
-            <label for="message" class="text-center">Cuéntanos qué necesitas</label>
+            <label for="message" class="text-center text-sm sm:text-base"
+              >Cuéntanos qué necesitas</label
+            >
             <textarea
               name="message"
               id="message"
-              class="bg-transparent border border-blakia-brown/30 rounded-lg p-2 outline-none focus:border-blakia-brown"
+              class="bg-transparent border border-blakia-brown/30 dark:border-white/30 rounded-lg p-2 outline-none focus:border-blakia-brown dark:focus:border-white"
             ></textarea>
           </div>
 
           <button
-            class="bg-blakia-brown text-white py-3 rounded-full hover:bg-blakia-brown/90 transition-colors"
+            class="btn-principal py-3 rounded-full transition-colors text-base"
           >
             Enviar
           </button>

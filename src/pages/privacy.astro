@@ -1,239 +1,234 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
-import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 ---
 
 <PageLayout title="Política de Privacidad | BlakIA">
-  <div class="relative bg-blakia-bone/50">
-    <div
-      class="absolute inset-0 bg-gradient-to-b from-blakia-bone/50 to-blakia-bone pointer-events-none"
-    >
-    </div>
-    <div class="container relative py-20 pb-10 text-center">
-      <h1
-        class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-blakia-brown to-blakia-brown/80 mb-6"
-      >
-        Política de Privacidad
-      </h1>
-      <p class="text-blakia-brown text-lg max-w-2xl mx-auto">
-        Tu privacidad es importante para nosotros. Descubre cómo protegemos y
-        gestionamos tus datos.
-      </p>
-    </div>
-  </div>
-
-  <div class="container max-w-4xl py-12 md:py-16">
-    <div
-      class="prose prose-neutral max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blakia-brown hover:prose-a:text-blakia-brown/80"
-    >
+  <div class="p-6">
+    <div class="relative mx-auto pt-6">
       <div
-        class="bg-white border border-blakia-brown/20 rounded-2xl p-8 md:p-12 shadow-sm"
+        class="absolute inset-0 pointer-events-none"
       >
-        <section class="space-y-12">
-          <div class="relative pl-6 border-l-4 border-blakia-brown/50">
-            <h2 class="text-2xl font-bold mb-4 !mt-0 text-blakia-brown">
-              1. Introducción
-            </h2>
-            <p class="text-blakia-brown leading-relaxed">
-              En Blakia, nos comprometemos a proteger y respetar la privacidad
-              de nuestros usuarios y clientes. Esta Política de Privacidad
-              explica cómo recopilamos, utilizamos, almacenamos y protegemos la
-              información personal que nos proporcionas a través de nuestro
-              sitio web y servicios.
-            </p>
-          </div>
-
-          <div>
-            <h2
-              class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
-            >
-              <span class="text-blakia-brown">02.</span> Información que Recopilamos
-            </h2>
-            <p class="mb-4 text-blakia-brown">
-              Podemos recopilar los siguientes datos para ofrecerte el mejor
-              servicio posible:
-            </p>
-            <div class="grid sm:grid-cols-2 gap-4 not-prose">
-              <div class="p-4 bg-blakia-bone/30 rounded-lg border border-blakia-brown/20">
-                <h3 class="font-semibold mb-2 text-blakia-brown">
-                  Datos personales
-                </h3>
-                <p class="text-sm text-blakia-brown/70">
-                  Nombre, correo electrónico y información proporcionada en
-                  formularios.
-                </p>
-              </div>
-              <div class="p-4 bg-blakia-bone/30 rounded-lg border border-blakia-brown/20">
-                <h3 class="font-semibold mb-2 text-blakia-brown">Datos de uso</h3>
-                <p class="text-sm text-blakia-brown/70">
-                  IP, navegador, páginas visitadas y comportamiento en el sitio.
-                </p>
-              </div>
-              <div
-                class="p-4 bg-blakia-bone/30 rounded-lg col-span-full border border-blakia-brown/20"
-              >
-                <h3 class="font-semibold mb-2 text-blakia-brown">Cookies</h3>
-                <p class="text-sm text-blakia-brown/70">
-                  Tecnologías para mejorar la experiencia y analizar tráfico.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h2
-              class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
-            >
-              <span class="text-blakia-brown">03.</span> Finalidad del Tratamiento
-            </h2>
-            <p class="mb-2 text-blakia-brown">
-              La información recopilada será utilizada para los siguientes
-              fines:
-            </p>
-            <ul class="list-none space-y-2 pl-0">
-              <li class="flex items-start gap-2">
-                <span class="text-blakia-brown mt-1.5">•</span>
-                <span class="text-blakia-brown/60"
-                  >Gestionar y responder a tus consultas o solicitudes de
-                  información.</span
-                >
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-blakia-brown mt-1.5">•</span>
-                <span class="text-blakia-brown/60"
-                  >Mejorar nuestros servicios y la experiencia de navegación.</span
-                >
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-blakia-brown mt-1.5">•</span>
-                <span class="text-blakia-brown/60"
-                  >Cumplir con obligaciones legales aplicables.</span
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h2
-              class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
-            >
-              <span class="text-blakia-brown">04.</span> Legitimación
-            </h2>
-            <p class="text-blakia-brown leading-relaxed">
-              La base legal para el tratamiento de tus datos es tu
-              consentimiento explícito al completar y enviar el formulario de
-              contacto.
-            </p>
-          </div>
-
-          <div>
-            <h2
-              class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
-            >
-              <span class="text-blakia-brown">05.</span> Conservación
-            </h2>
-            <p class="text-blakia-brown leading-relaxed">
-              Conservaremos tus datos personales solo durante el tiempo
-              necesario para cumplir con los fines para los que fueron
-              recopilados y, en su caso, durante los plazos legales aplicables.
-            </p>
-          </div>
-
-          <div>
-            <h2
-              class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
-            >
-              <span class="text-blakia-brown">06.</span> Destinatarios
-            </h2>
-            <p class="text-blakia-brown leading-relaxed">
-              No compartiremos tus datos personales con terceros, salvo que sea
-              necesario para cumplir con obligaciones legales o cuando hayas
-              otorgado tu consentimiento expreso.
-            </p>
-          </div>
-
-          <div>
-            <h2
-              class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
-            >
-              <span class="text-blakia-brown">07.</span> Derechos de los Usuarios
-            </h2>
-            <p class="mb-4 text-blakia-brown">
-              Como usuario, tienes derecho a acceder, rectificar, suprimir,
-              limitar, oponerte y solicitar la portabilidad de tus datos.
-            </p>
-            <div
-              class="bg-blakia-brown/5 border border-blakia-brown/20 rounded-lg p-6 not-prose"
-            >
-              <p class="text-sm font-medium text-blakia-brown mb-2">
-                ¿Quieres ejercer tus derechos?
-              </p>
-              <p class="text-blakia-brown/70 mb-4">
-                Envíanos una solicitud y te atenderemos a la mayor brevedad.
-              </p>
-              <a
-                href="mailto:contacto@blakia.com"
-                class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blakia-brown text-white hover:bg-blakia-brown/90 h-10 px-4 py-2"
-              >
-                Contactar soporte
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h2
-              class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
-            >
-              <span class="text-blakia-brown">08.</span> Seguridad
-            </h2>
-            <p class="text-blakia-brown leading-relaxed">
-              Adoptamos las medidas técnicas y organizativas necesarias para
-              garantizar la seguridad de tus datos personales y evitar su
-              pérdida, mal uso o acceso no autorizado.
-            </p>
-          </div>
-
-          <div>
-            <h2
-              class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
-            >
-              <span class="text-blakia-brown">09.</span> Actualizaciones
-            </h2>
-            <p class="text-blakia-brown leading-relaxed">
-              Nos reservamos el derecho de actualizar esta Política de
-              Privacidad en cualquier momento. Te recomendamos revisar
-              periódicamente esta página para estar informado de cualquier
-              cambio.
-            </p>
-          </div>
-
-          <div class="pt-8 border-t border-blakia-brown/20">
-            <h2 class="text-2xl font-bold mb-4 text-blakia-brown">Contacto</h2>
-            <p class="text-blakia-brown leading-relaxed">
-              Si tienes preguntas o dudas sobre nuestra Política de Privacidad,
-              puedes ponerte en contacto con nosotros a través del correo
-              electrónico <a
-                href="mailto:contacto@blakia.com"
-                class="text-blakia-brown hover:underline font-medium"
-                >contacto@blakia.com</a
-              >.
-            </p>
-          </div>
-        </section>
       </div>
-
-      <div class="mt-12 text-center">
-        <Button
-          variant="ghost"
-          className="hover:bg-transparent hover:text-blakia-brown transition-colors"
-          asChild
+      <div class="container relative py-20 pb-10 text-center mx-auto">
+        <h1
+          class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6 text-blakia-brown dark:text-blakia-bone-dark"
         >
-          <a href="/" class="flex items-center gap-2">
+          Política de Privacidad
+        </h1>
+        <p class="text-blakia-brown dark:text-blakia-bone-dark text-lg max-w-2xl mx-auto">
+          Tu privacidad es importante para nosotros. Descubre cómo protegemos y
+          gestionamos tus datos.
+        </p>
+      </div>
+    </div>
+  
+    <div class="container mx-auto max-w-4xl py-12 md:py-16">
+      <div
+        class="prose prose-neutral max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blakia-brown hover:prose-a:text-blakia-brown/80"
+      >
+        <div
+          class="bg-white border border-blakia-brown/20 rounded-2xl p-8 md:p-12 shadow-sm"
+        >
+          <section class="space-y-12">
+            <div class="relative pl-6 border-l-4 border-blakia-brown/50">
+              <h2 class="text-2xl font-bold mb-4 !mt-0 text-blakia-brown">
+                1. Introducción
+              </h2>
+              <p class="text-blakia-brown leading-relaxed">
+                En Blakia, nos comprometemos a proteger y respetar la privacidad
+                de nuestros usuarios y clientes. Esta Política de Privacidad
+                explica cómo recopilamos, utilizamos, almacenamos y protegemos la
+                información personal que nos proporcionas a través de nuestro
+                sitio web y servicios.
+              </p>
+            </div>
+  
+            <div>
+              <h2
+                class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
+              >
+                <span class="text-blakia-brown">02.</span> Información que Recopilamos
+              </h2>
+              <p class="mb-4 text-blakia-brown">
+                Podemos recopilar los siguientes datos para ofrecerte el mejor
+                servicio posible:
+              </p>
+              <div class="grid sm:grid-cols-2 gap-4 not-prose">
+                <div class="p-4 bg-blakia-bone/30 rounded-lg border border-blakia-brown/20">
+                  <h3 class="font-semibold mb-2 text-blakia-brown">
+                    Datos personales
+                  </h3>
+                  <p class="text-sm text-blakia-brown/70">
+                    Nombre, correo electrónico y información proporcionada en
+                    formularios.
+                  </p>
+                </div>
+                <div class="p-4 bg-blakia-bone/30 rounded-lg border border-blakia-brown/20">
+                  <h3 class="font-semibold mb-2 text-blakia-brown">Datos de uso</h3>
+                  <p class="text-sm text-blakia-brown/70">
+                    IP, navegador, páginas visitadas y comportamiento en el sitio.
+                  </p>
+                </div>
+                <div
+                  class="p-4 bg-blakia-bone/30 rounded-lg col-span-full border border-blakia-brown/20"
+                >
+                  <h3 class="font-semibold mb-2 text-blakia-brown">Cookies</h3>
+                  <p class="text-sm text-blakia-brown/70">
+                    Tecnologías para mejorar la experiencia y analizar tráfico.
+                  </p>
+                </div>
+              </div>
+            </div>
+  
+            <div>
+              <h2
+                class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
+              >
+                <span class="text-blakia-brown">03.</span> Finalidad del Tratamiento
+              </h2>
+              <p class="mb-2 text-blakia-brown">
+                La información recopilada será utilizada para los siguientes
+                fines:
+              </p>
+              <ul class="list-none space-y-2 pl-0">
+                <li class="flex items-start gap-2">
+                  <span class="text-blakia-brown mt-1.5">•</span>
+                  <span class="text-blakia-brown/60"
+                    >Gestionar y responder a tus consultas o solicitudes de
+                    información.</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blakia-brown mt-1.5">•</span>
+                  <span class="text-blakia-brown/60"
+                    >Mejorar nuestros servicios y la experiencia de navegación.</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blakia-brown mt-1.5">•</span>
+                  <span class="text-blakia-brown/60"
+                    >Cumplir con obligaciones legales aplicables.</span
+                  >
+                </li>
+              </ul>
+            </div>
+  
+            <div>
+              <h2
+                class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
+              >
+                <span class="text-blakia-brown">04.</span> Legitimación
+              </h2>
+              <p class="text-blakia-brown leading-relaxed">
+                La base legal para el tratamiento de tus datos es tu
+                consentimiento explícito al completar y enviar el formulario de
+                contacto.
+              </p>
+            </div>
+  
+            <div>
+              <h2
+                class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
+              >
+                <span class="text-blakia-brown">05.</span> Conservación
+              </h2>
+              <p class="text-blakia-brown leading-relaxed">
+                Conservaremos tus datos personales solo durante el tiempo
+                necesario para cumplir con los fines para los que fueron
+                recopilados y, en su caso, durante los plazos legales aplicables.
+              </p>
+            </div>
+  
+            <div>
+              <h2
+                class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
+              >
+                <span class="text-blakia-brown">06.</span> Destinatarios
+              </h2>
+              <p class="text-blakia-brown leading-relaxed">
+                No compartiremos tus datos personales con terceros, salvo que sea
+                necesario para cumplir con obligaciones legales o cuando hayas
+                otorgado tu consentimiento expreso.
+              </p>
+            </div>
+  
+            <div>
+              <h2
+                class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
+              >
+                <span class="text-blakia-brown">07.</span> Derechos de los Usuarios
+              </h2>
+              <p class="mb-4 text-blakia-brown">
+                Como usuario, tienes derecho a acceder, rectificar, suprimir,
+                limitar, oponerte y solicitar la portabilidad de tus datos.
+              </p>
+              <div
+                class="bg-blakia-brown/5 dark:bg-blakia-dark/10 border border-blakia-brown/20 rounded-lg p-6 not-prose"
+              >
+                <p class="text-sm font-medium text-blakia-brown mb-2">
+                  ¿Quieres ejercer tus derechos?
+                </p>
+                <p class="text-blakia-brown/70 mb-4">
+                  Envíanos una solicitud y te atenderemos a la mayor brevedad.
+                </p>
+                <a
+                  href="mailto:contacto@blakia.com"
+                  class="btn-principal inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors h-10 px-4 py-2"
+                >
+                  Contactar soporte
+                </a>
+              </div>
+            </div>
+  
+            <div>
+              <h2
+                class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
+              >
+                <span class="text-blakia-brown">08.</span> Seguridad
+              </h2>
+              <p class="text-blakia-brown leading-relaxed">
+                Adoptamos las medidas técnicas y organizativas necesarias para
+                garantizar la seguridad de tus datos personales y evitar su
+                pérdida, mal uso o acceso no autorizado.
+              </p>
+            </div>
+  
+            <div>
+              <h2
+                class="text-2xl font-bold mb-4 flex items-center gap-2 text-blakia-brown"
+              >
+                <span class="text-blakia-brown">09.</span> Actualizaciones
+              </h2>
+              <p class="text-blakia-brown leading-relaxed">
+                Nos reservamos el derecho de actualizar esta Política de
+                Privacidad en cualquier momento. Te recomendamos revisar
+                periódicamente esta página para estar informado de cualquier
+                cambio.
+              </p>
+            </div>
+  
+            <div class="pt-8 border-t border-blakia-brown/20">
+              <h2 class="text-2xl font-bold mb-4 text-blakia-brown">Contacto</h2>
+              <p class="text-blakia-brown leading-relaxed">
+                Si tienes preguntas o dudas sobre nuestra Política de Privacidad,
+                puedes ponerte en contacto con nosotros a través del correo
+                electrónico <a
+                  href="mailto:contacto@blakia.com"
+                  class="text-blakia-brown hover:underline font-medium"
+                  >contacto@blakia.com</a
+                >.
+              </p>
+            </div>
+          </section>
+        </div>
+  
+        <div class="mt-12 text-center">
+          <a href="/" class="flex items-center gap-2 dark:text-blakia-bone-dark">
             <ArrowLeft className="h-4 w-4" />
             Volver a la página principal
           </a>
-        </Button>
+        </div>
       </div>
     </div>
   </div>
