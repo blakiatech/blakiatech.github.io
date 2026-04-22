@@ -13,9 +13,9 @@ import { ModeToggle } from "@/components/ModeToggle";
 
 const navItems = [
   { name: "Beneficios", href: "/#benefits", icon: Sparkles },
-  { name: "Servicios", href: "/#services", icon: Cpu },
+  { name: "Productos", href: "https://hagalink.es/es/productos", icon: Cpu },
   { name: "Prensa", href: "/#press", icon: Newspaper },
-  { name: "Contacto", href: "/contact", icon: Send },
+  { name: "Contacto", href: "https://hagalink.es/es/contacto", icon: Send },
 ];
 ---
 
@@ -68,14 +68,6 @@ const navItems = [
       <!-- Toggle -->
       <ModeToggle client:load />
 
-      <!-- Demo Button (Desktop) -->
-      <a
-        href="/chat"
-        class="hidden md:inline-flex items-center justify-center rounded-full text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow-[0_0_15px_rgba(94,23,235,0.3)] hover:shadow-[0_0_25px_rgba(94,23,235,0.5)] hover:bg-primary/90 h-9 px-5 hover:-translate-y-0.5 active:translate-y-0 duration-300"
-      >
-        <span>Demo</span>
-      </a>
-
       <!-- Mobile Hamburger -->
       <button
         class="md:hidden p-2.5 rounded-full text-foreground hover:bg-muted transition-colors border border-transparent hover:border-border relative z-50"
@@ -127,16 +119,7 @@ const navItems = [
   </div>
   
   <div class="p-6 border-t border-border/50 bg-muted/20 pb-10">
-    <a
-      href="/chat"
-      class="flex items-center justify-center p-4 rounded-2xl text-lg font-bold bg-gradient-to-r from-primary to-violet-600 text-primary-foreground shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-300 w-full"
-    >
-      <div class="flex items-center gap-3">
-        <MessageSquare size={20} />
-        Probar Demo
-      </div>
-    </a>
-  </div>
+    </div>
 </div>
 
 <script is:inline>

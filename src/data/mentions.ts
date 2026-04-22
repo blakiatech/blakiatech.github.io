@@ -1,4 +1,3 @@
-import mention1 from "@/assets/mentions/mention1.webp";
 import mention2 from "@/assets/mentions/mention2.webp";
 import mention3 from "@/assets/mentions/mention3.webp";
 
@@ -17,23 +16,6 @@ export interface Mention {
 }
 
 export const mentions: Mention[] = [
-    {
-        id: 1,
-        source: "Diario Córdoba",
-        logo: "DC",
-        category: "Entrevista",
-        title: 'José Álvaro Ruiz, socio de Blakia: "Lo que más nos piden es automatizar la comunicación con el cliente con chatbot"',
-        date: "2025-12-14",
-        summary: "La agencia se dedica a implantar «la herramienta número 1, la IA» en las empresas, con objeto de ahorrar costes, aumentar la eficiencia operativa e incrementar la facturación.",
-        url: "https://www.diariocordoba.com/cordoba-ciudad/2025/12/14/jose-alvaro-ruiz-socio-blakia-124759167.html",
-        author: "Pilar Cobos",
-        image: mention1.src,
-        content: [
-            "José Álvaro Ruiz tiene 25 años de edad y en enero de este año constituyó la agencia de inteligencia artificial avanzada Blakia junto a Francisco Olmedo. Se dedican a implantar «la herramienta número 1, la IA» en las empresas, con objeto de ahorrar costes, aumentar la eficiencia operativa e incrementar, finalmente, la facturación.",
-            "«Somos capaces de diseñar herramientas complejas a medida, que pueden llegar a cualquier empresa, desde autónomos a grandes sociedades», explica. Valga como ejemplo uno de sus proyectos más conocidos, el chatbot de la Feria de Córdoba.",
-            "Blakia, que es miembro de la Asociación de Jóvenes Empresarios (AJE), cuenta en la actualidad con el trabajo de sus dos socios, pero en 2026 espera incorporar a tres profesionales en prácticas, «con opciones reales de contratación»."
-        ]
-    },
     {
         id: 2,
         source: "Subbética Hoy",
